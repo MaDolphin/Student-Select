@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<jmxConfigurator />
+
+	<appender name="rollFile"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../detectionLog/event.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>detectionLog/event.%d{yyyy-MM-dd_HH}.log
+			</fileNamePattern>
+			<maxHistory>300</maxHistory>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d %-5level [%thread] %logger{1} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d %-5level %logger{1} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!-- %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{30} - %msg%n -->
+	<!-- <logger name="com.shdc" level="debug"> <appender-ref ref="rollFile" 
+		/> </logger> -->
+	<logger name="com.detection" level="debug" />
+	<root level="info">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollFile" />
+	</root>
+</configuration>
