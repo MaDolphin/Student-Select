@@ -65,11 +65,11 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="addDevice.action" target="rightFrame">导入学生信息</a>
+                        <a href="/admin/batchImport" target="rightFrame">导入信息</a>
                     </li>
-                    <li>
-                        <a href="addDevice.action" target="rightFrame">导入导师信息</a>
-                    </li>
+                    <%--<li>--%>
+                        <%--<a href="addDevice.action" target="rightFrame">导入导师信息</a>--%>
+                    <%--</li>--%>
                 </ul>
             </li>
 

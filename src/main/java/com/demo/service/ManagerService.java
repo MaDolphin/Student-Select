@@ -14,8 +14,10 @@ import java.util.List;
 
 public interface ManagerService {
     public int isExist(String userName,String password,int role);
-    public boolean uploadFileToDB(MultipartFile file);
-    public boolean checkExcelSheet(Workbook wb,int sheetNum);
+    public boolean studentFileToDB(MultipartFile file);
+    public boolean teacherFileToDB(MultipartFile file);
+    public boolean majorFileToDB(MultipartFile file);
+    public boolean checkExcelSheet(Workbook wb,String sheetName);
     public void studentIntoDB(List<Student> studentList);
     public void teacherIntoDB(List<Teacher> teacherList);
     public void majorIntoDB(List<Major> majorList);
