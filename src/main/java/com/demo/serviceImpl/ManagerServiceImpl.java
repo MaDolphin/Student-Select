@@ -32,12 +32,17 @@ import java.util.List;
 public class ManagerServiceImpl implements ManagerService {
     @Resource
     private ManagerMapper managerDao;
+
     @Resource
     private StudentMapper studentDao;
     @Resource
     private TeacherMapper teacherDao;
     @Resource
     private MajorMapper majorDao;
+
+    public int isExist(String userName,String password,int role){
+        return managerDao.isExist(userName,password,role);
+    }
 
     @Override
     public boolean uploadFileToDB(MultipartFile file) {

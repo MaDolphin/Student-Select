@@ -56,7 +56,7 @@
                 </a>
             </li>
 
-            <%-- <c:if test="${role == 'manager1'}">--%>
+             <c:if test="${role == 'manager1'}">
             <li class="">
                 <a href="javascript:;">
                     <i class="icon-file-text"></i>
@@ -166,7 +166,7 @@
 
                 </ul>
             </li>
-            <%-- </c:if>--%>
+             </c:if>
 
             <c:if test="${role == 'student'}">
                 <li class="">

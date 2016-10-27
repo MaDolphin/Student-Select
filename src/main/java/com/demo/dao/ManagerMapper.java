@@ -43,4 +43,15 @@ public interface ManagerMapper {
         "where manager_name = #{managerName,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Manager record);
+
+    @Select({
+            "select",
+            "count(*)",
+            "from manager",
+            "where manager_name = #{0}",
+            "and manager_pwd = #{1}",
+            "and manager_role = #{2}"
+    })
+
+    int isExist(String userName,String password,int role);
 }

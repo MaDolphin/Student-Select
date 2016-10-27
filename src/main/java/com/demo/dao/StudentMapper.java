@@ -70,4 +70,14 @@ public interface StudentMapper {
         "where student_id = #{studentId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Student record);
+
+    @Select({
+            "select",
+            "count(*)",
+            "from student",
+            "where student_id = #{0}",
+            "and student_pwd = #{1}"
+    })
+
+    int isExist(String userName,String password);
 }

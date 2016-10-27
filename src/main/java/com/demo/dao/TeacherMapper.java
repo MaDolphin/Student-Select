@@ -57,4 +57,14 @@ public interface TeacherMapper {
         "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Teacher record);
+
+    @Select({
+            "select",
+            "count(*)",
+            "from teacher",
+            "where teacher_id = #{0}",
+            "and teacher_pwd = #{1}"
+    })
+
+    int isExist(String userName,String password);
 }

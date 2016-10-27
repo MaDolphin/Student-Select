@@ -13,4 +13,8 @@ import javax.annotation.Resource;
 public class TeacherServiceImpl implements TeacherService{
     @Resource
     private TeacherMapper teacherDao;
+
+    public int isExist(String userName,String password){
+        return teacherDao.isExist(userName,password);
+    }
 }

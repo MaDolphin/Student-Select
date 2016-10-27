@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 public interface ManagerService {
+    public int isExist(String userName,String password,int role);
     public boolean uploadFileToDB(MultipartFile file);
     public boolean checkExcelSheet(Workbook wb,int sheetNum);
     public void studentIntoDB(List<Student> studentList);
