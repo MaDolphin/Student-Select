@@ -29,7 +29,7 @@
             <div class="row-fluid">
                 <div class="span12">
                     <h3 class="page-title">
-                    	 设备技术参数添加：
+                        批量导入
                     </h3>
                     <ul class="breadcrumb">
                         <li>
@@ -38,8 +38,8 @@
                             <span class="icon-angle-right"></span>
                         </li>
                         <li>
-                            <a href="#">设备技术参数添加</a>
-                        </li> 
+                            <a href="#">批量导入</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     <!-- BEGIN SAMPLE FORM PORTLET-->
                     <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <form action="batchImportTeacher.action" class="form-horizontal" method="post" enctype="multipart/form-data">
+                        <form action="/manager/batchImportMethod" class="form-horizontal" method="post" enctype="multipart/form-data">
                             <div class="control-group">
                                 <label class="control-label">文件地址</label>
                                 <div class="controls">
@@ -63,7 +63,7 @@
                                             <span class="btn btn-file">
 													<span class="fileupload-new">上传</span>
 													<span class="fileupload-exists">修改</span>
-													<input type="file" style="height:20px" id="upload" name="upload" onchange="LimitAttach()" />
+													<input type="file" style="height:20px" id="upload" name="file" onchange="LimitAttach()" />
 													</span>
                                             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
                                         </div>

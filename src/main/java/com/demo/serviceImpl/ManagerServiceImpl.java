@@ -8,6 +8,7 @@ import com.demo.entity.Major;
 import com.demo.entity.Student;
 import com.demo.entity.Teacher;
 import com.demo.service.ManagerService;
+import com.demo.util.Md5;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -30,6 +31,7 @@ import java.util.List;
  */
 @Service("managerService")
 public class ManagerServiceImpl implements ManagerService {
+
     @Resource
     private ManagerMapper managerDao;
 
@@ -85,7 +87,7 @@ public class ManagerServiceImpl implements ManagerService {
                             case 0 : student.setStudentId(cellValue);break;
                             case 1 : student.setStudentName(cellValue);break;
                             case 2 : student.setPersonId(cellValue);
-                                student.setStudentPwd(cellValue.substring(12,18));
+                                student.setStudentPwd(Md5.Md5(cellValue.substring(12,18)));
                                 break;
                             case 3 : student.setStudentSex(cellValue);break;
                             case 4 : student.setStudentBirthday(cellValue);break;
@@ -123,7 +125,7 @@ public class ManagerServiceImpl implements ManagerService {
                             case 0 : teacher.setTeacherId(cellValue);break;
                             case 1 : teacher.setTeacherName(cellValue);break;
                             case 2 : teacher.setMajorId(cellValue);break;
-                            case 3 : teacher.setTeacherPwd(cellValue);break;
+                            case 3 : teacher.setTeacherPwd(Md5.Md5(cellValue));break;
                             case 4 : teacher.setTeacherIntroduction(cellValue);break;
                             case 5 : teacher.setTeacherSurplus(Integer.valueOf(cellValue));break;
                         }

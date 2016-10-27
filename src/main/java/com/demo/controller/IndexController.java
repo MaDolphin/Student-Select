@@ -24,7 +24,7 @@ public class IndexController {
     private ManagerService managerService;
     @RequestMapping("/login")
     public String login(){
-        return "/backstage/Login";
+        return "/backstage/BatchImport";
     }
 
     @RequestMapping("/main")
