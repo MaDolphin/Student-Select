@@ -245,7 +245,6 @@ function LimitAttach() {
 
         if(file1 !="" || file2 !="" || file3 !=""){
             if(flag1 == true && flag2 == true && flag3 == true){
-                alert("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 return true;
             }
         }else {
