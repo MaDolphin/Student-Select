@@ -71,6 +71,10 @@
           <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz:2.2.1" />
           <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1.1" />
           <element id="library" level="project" name="Maven: org.apache.poi:poi:3.9" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.5-FINAL" />
+          <element id="library" level="project" name="Maven: org.apache.poi:ooxml-schemas:1.0" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
           <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.6" />
           <element id="library" level="project" name="Maven: org.apache.xbean:xbean-spring:3.18" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.3" />

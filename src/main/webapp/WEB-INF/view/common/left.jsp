@@ -1,0 +1,209 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Brown
+  Date: 2016/6/3
+  Time: 16:10
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html style="margin-top: 10px">
+<!-- BEGIN HEAD -->
+<head>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- BEGIN GLOBAL MANDATORY STYLES /css/backstage/bootstrap.min.css-->
+    <link href="/css/backstage/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="/css/backstage/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="/css/backstage/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/daterangepicker.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/fullcalendar.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/backstage/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="/css/backstage/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+    <!-- END PAGE LEVEL STYLES -->
+    <link rel="shortcut icon" href="/images/backstage/favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body style="background-color: #3d3d3d;width: 225px">
+<!-- BEGIN HEADER -->
+<!-- END HEADER -->
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar nav-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="page-sidebar-menu">
+            <li>
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <div class="sidebar-toggler hidden-phone"></div>
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+            </li>
+            <li class="start active ">
+                <a href="main.action" target="main">
+                    <i class="icon-home"></i>
+                    <span class="title">主页</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            <li class="">
+                <a href="javascript:;">
+                    <i class="icon-file-text"></i>
+                    <span class="title">设备</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                 	<li>
+                        <a href="addDevice.action" target="rightFrame">增加设备</a>
+                    </li>
+                    <li>
+                        <a href="findAllDevice.action" target="rightFrame">全部显示</a>
+                    </li>
+                    <c:forEach items="${parameterlist}" var="parameter">
+                    	<li>
+		                    <a href="javascript:;">
+		                   		 <i class="icon-file-text"></i>
+		                  		  <span class="title">${parameter.deviceType}</span>
+		                   		 <span class="arrow "></span>
+		             		 </a>
+		             		 <ul class="sub-menu">
+		             		  <li>
+                   	 			<a href="findDeviceByTypeAndNorm.action?deviceType=${parameter.deviceType}&deviceNorm=大类" target="rightFrame">大类</a>
+                   			 </li>  
+                   		 	 <li>
+                   	 			<a href="findDeviceByTypeAndNorm.action?deviceType=${parameter.deviceType}&deviceNorm=中类" target="rightFrame">中类</a>
+                   		 	</li> 
+                   		 	 <li>
+                   	 			<a href="findDeviceByTypeAndNorm.action?deviceType=${parameter.deviceType}&deviceNorm=小类" target="rightFrame">小类</a>
+                   		 	</li> 
+		             		 </ul>
+		             	 </li>
+                                
+                     </c:forEach>
+                </ul>
+            </li>
+            
+            <li class="">
+                <a href="javascript:;">
+                    <i class="icon-file-text"></i>
+                    <span class="title">变电站</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                <li>
+                <a href="javascript:;">
+                    <i class="icon-file-text"></i>
+                    <span class="title">增加</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+               		 <li>
+                        <a href="addUnitInterval.action" target="rightFrame">增加单元间隔</a>
+                    </li>
+                    <li>
+                        <a href="/power_manager/view/AddSubstation.jsp" target="rightFrame">增加变电站</a>
+                    </li>
+                    </ul>
+                </li>
+                	<li>
+		                <a href="javascript:;">
+		                    <i class="icon-file-text"></i>
+		                    <span class="title">所有变电站</span>
+		                    <span class="arrow "></span>
+		                </a>
+		                <ul class="sub-menu">
+	                    <c:forEach items="${substationlist}" var="substation">
+	                          <li>
+	                   	 			<a href="findUnitIntervalBySubstationNo.action?substationNo=${substation.substationNo}" target="rightFrame">${substation.substationName}(${substation.substationNo})</a>
+	                   		 </li>         
+	                     </c:forEach>
+	                     </ul>
+                     </li>
+                </ul>
+            </li>
+            <c:if test="${user == 'manager'}">
+             <li class="">
+                <a href="javascript:;">
+                    <i class="icon-file-text"></i>
+                    <span class="title">审核</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                   	 	<a href="findAuditingDevice.action" target="rightFrame">设备审核</a>
+                   	 	<!-- <a href="findAuditingUnitInterval.action" target="rightFrame">单元间隔审核</a>
+                   	 	<a href="findAuditingSubstation.action" target="rightFrame">变电站审核</a> -->
+                   </li>         
+                </ul>
+            </li>
+            </c:if>
+            </ul>
+            </div>
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<script src="/js/backstage/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="/js/backstage/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="/js/backstage/bootstrap.min.js" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="/js/backstage/excanvas.min.js"></script>
+<script src="/js/backstage/respond.min.js"></script>
+<![endif]-->
+<script src="/js/backstage/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.uniform.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script src="/js/backstage/jquery.vmap.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.vmap.russia.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.vmap.world.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.vmap.europe.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.vmap.germany.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.vmap.usa.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.vmap.sampledata.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.flot.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.flot.resize.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.pulsate.min.js" type="text/javascript"></script>
+<script src="/js/backstage/date.js" type="text/javascript"></script>
+<script src="/js/backstage/daterangepicker.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.gritter.js" type="text/javascript"></script>
+<script src="/js/backstage/fullcalendar.min.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.easy-pie-chart.js" type="text/javascript"></script>
+<script src="/js/backstage/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="/js/backstage/app.js" type="text/javascript"></script>
+<script src="/js/backstage/index.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script>
+    jQuery(document).ready(function () {
+        App.init(); // initlayout and core plugins
+        Index.init();
+        Index.initJQVMAP(); // init index page's custom scripts
+        Index.initCalendar(); // init index page's custom scripts
+        Index.initCharts(); // init index page's custom scripts
+        Index.initChat();
+        Index.initMiniCharts();
+        Index.initDashboardDaterange();
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
+

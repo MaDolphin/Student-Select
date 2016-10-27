@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - StudentSelect@121.42.197.31">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="StudentSelect">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="Class"/>
+    <schema id="3" name="Device"/>
+    <schema id="4" name="information_schema"/>
+    <schema id="5" name="Logistics"/>
+    <schema id="6" name="mysql"/>
+    <schema id="7" name="newvil"/>
+    <schema id="8" name="performance_schema"/>
+    <schema id="9" name="SkyDrive"/>
+    <table id="10" parent="1" name="intention"/>
+    <table id="11" parent="1" name="major"/>
+    <table id="12" parent="1" name="manager"/>
+    <table id="13" parent="1" name="student"/>
+    <table id="14" parent="1" name="teacher"/>
+    <column id="15" parent="10" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="16" parent="10" name="student_id">
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="17" parent="10" name="first_intention">
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="18" parent="10" name="second_intention">
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="19" parent="10" name="third_intention">
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="20" parent="10" name="first_opttype">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="21" parent="10" name="second_opttype">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="22" parent="10" name="third_opttype">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="23" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="24" parent="11" name="major_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="25" parent="11" name="major_name">
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <column id="26" parent="11" name="college_name">
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <key id="27" parent="11" name="PRIMARY">
+      <columns>major_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="28" parent="12" name="manager_name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <column id="29" parent="12" name="manager_pwd">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="30" parent="12" name="manager_role">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="31" parent="12" name="college_name">
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <key id="32" parent="12" name="PRIMARY">
+      <columns>manager_name</columns>
+      <primary>1</primary>
+    </key>
+    <column id="33" parent="13" name="student_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="34" parent="13" name="person_id">
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="35" parent="13" name="student_name">
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <column id="36" parent="13" name="student_pwd">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="37" parent="13" name="student_sex">
+      <data-type>varchar(2)|0</data-type>
+    </column>
+    <column id="38" parent="13" name="student_birthday">
+      <data-type>varchar(10)|0</data-type>
+    </column>
+    <column id="39" parent="13" name="major_id">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="40" parent="13" name="student_tel">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="41" parent="13" name="student_comment">
+      <data-type>text|0</data-type>
+    </column>
+    <column id="42" parent="13" name="teacher_id">
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <key id="43" parent="13" name="PRIMARY">
+      <columns>student_id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="44" parent="14" name="teacher_id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(18)|0</data-type>
+    </column>
+    <column id="45" parent="14" name="teacher_name">
+      <data-type>varchar(25)|0</data-type>
+    </column>
+    <column id="46" parent="14" name="teacher_pwd">
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="47" parent="14" name="major_id">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="48" parent="14" name="teacher_introduction">
+      <data-type>text|0</data-type>
+    </column>
+    <column id="49" parent="14" name="teacher_surplus">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="50" parent="14" name="PRIMARY">
+      <columns>teacher_id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

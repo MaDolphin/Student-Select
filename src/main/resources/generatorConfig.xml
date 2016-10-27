@@ -76,35 +76,32 @@
 
 
 
-        <!--<table tableName="device" domainObjectName="Device"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
-        <!--<table tableName="examine_record" domainObjectName="Examine_record"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
-        <!--<table tableName="plan" domainObjectName="Plan"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
-        <table tableName="job" domainObjectName="Job"
+
+        <table tableName="manager" domainObjectName="Manager"
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false" >
             <property name="useActualColumnNames" value="false"/>
         </table>
-        <!--<table tableName="report" domainObjectName="Report"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
-        <!--<table tableName="user" domainObjectName="User"-->
-               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
-               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-        <!--</table>-->
+        <table tableName="student" domainObjectName="Student"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="teacher" domainObjectName="Teacher"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="major" domainObjectName="Major"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="intention" domainObjectName="Intention"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
     </context>
 </generatorConfiguration>
