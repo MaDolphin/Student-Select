@@ -17,25 +17,10 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 <!-- END HEAD -->
-<script>
-    function editPassword() {
-        var pwd = document.getElementById("pwd").value;
-        var oldPassword = hex_md5(editForm.oldPassword.value);
-        var newPassword = editForm.newPassword.value;
-        var checkPassword = editForm.checkPassword.value;
-        if(oldPassword != pwd){
-            alert("初始密码不正确，请重新输入！")
-        }else if(newPassword != checkPassword){
-            alert("新密码与确认密码不一致，请重新输入！")
-        }else{
-            editForm.submit();
-        }
-    }
 
-</script>
 <!-- BEGIN BODY -->
 <body style="background-color: white">
-<input type="hidden" value="${student.studentPwd}" id="pwd" name="pwd">
+
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid">
     <!-- BEGIN PAGE -->
@@ -70,13 +55,14 @@
                                 <div class="tab-pane active" id="portlet_tab1" style="margin-left: -50px">
                                     <!-- BEGIN FORM-->
                                     <form action="/student/editPassword?student=${student}" name="editForm" id="editForm" target="rightFrame" method="post" class="form-horizontal" >
+                                        <input type="hidden" value="${student.studentPwd}" id="pwd" name="pwd">
                                         <div class="row-fluid">
                                             <div class="span6 ">
                                                 <div class="control-group " >
                                                     <label class="control-label">原始密码</label>
                                                     <div class="controls">
                                                         <input type="password" name="oldPassword" id="oldPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
-                                                        <strong id="div_show" style="font-size:14px;color:red;align:center;line-height:34px;height:34px;"></strong>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -87,7 +73,7 @@
                                                 <div class="control-group " >
                                                     <label class="control-label">新密码</label>
                                                     <div class="controls">
-                                                        <input type="password" name="newPassworde" id="newPassworde" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
+                                                        <input type="password" name="newPassword" id="newPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,16 +83,16 @@
                                                 <div class="control-group " >
                                                     <label class="control-label">确认密码</label>
                                                     <div class="controls">
-                                                        <input type="password" name="checkPassworde" id="checkPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
+                                                        <input type="password" name="checkPassword" id="checkPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div
+                                        </div>
                                         <div class="row-fluid">
                                         </div>
 
                                         <div class="form-actions">
-                                            <button type="button" class="btn blue" id="submit" onclick="editPassword()"><i class="icon-ok"></i>提交</button>
+                                            <button type="button" class="btn blue" onclick="editPassword();"><i class="icon-ok"></i>提交</button>
                                             <button type="reset" class="btn">重置</button>
                                         </div>
                                     </form>
@@ -143,7 +129,7 @@
 <script src="/js/backstage/jquery.uniform.min.js" type="text/javascript" ></script>
 <script src="/js/backstage/MD5.js" type="text/javascript" ></script>
 <!-- END CORE PLUGINS -->
-<script src="../media/js/app.js"></script>
+<script src="/js/backstage/app.js"></script>
 <script>
     jQuery(document).ready(function() {
         // initiate layout and plugins
@@ -151,7 +137,30 @@
         App.init();
     });
 </script>
+<script>
+    function editPassword() {
+        var pwd = document.getElementById("pwd").value;
+        var oldPassword = hex_md5(document.getElementById("oldPassword").value);
 
+        var newPassword = document.getElementById("newPassword").value;
+        var checkPassword = document.getElementById("checkPassword").value;
+        alert(oldPassword+"  "+pwd);
+//        var pwd = document.editForm.pwd.value;
+//        var oldPassword = hex_md5(document.editForm.oldPassword.value);
+//        var newPassword = document.editForm.newPassword.value;
+//        var checkPassword = document.editForm.checkPassword.value;
+        if(oldPassword != pwd){
+            alert("初始密码不正确，请重新输入！");
+
+        }else if(newPassword != checkPassword){
+            alert("新密码与确认密码不一致，请重新输入！");
+
+        }else{
+            editForm.submit();
+        }
+    }
+
+</script>
 <script type="text/javascript">	
 
     $("#substationNo").blur(function () {

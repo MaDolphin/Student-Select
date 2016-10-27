@@ -40,6 +40,11 @@ public class StudentController {
         newPassword = Md5.Md5(newPassword);
         student.setStudentPwd(newPassword);
         studentService.editPassword(student);
-        return "/backstage/main";
+        return "redirect:/student/editSuccess";
+    }
+
+    @RequestMapping("/editSuccess")
+    public String editSuccess() {
+        return "/common/right";
     }
 }

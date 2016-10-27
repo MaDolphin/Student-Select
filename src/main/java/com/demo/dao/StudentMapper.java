@@ -91,7 +91,7 @@ public interface StudentMapper {
             "major_id = #{majorId,jdbcType=VARCHAR},",
             "student_tel = #{studentTel,jdbcType=VARCHAR},",
             "teacher_id = #{teacherId,jdbcType=VARCHAR}",
-
+            "where student_id = #{studentId,jdbcType=VARCHAR}"
     })
     int editPassword(Student student);
 }
