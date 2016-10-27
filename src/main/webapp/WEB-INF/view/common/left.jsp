@@ -55,99 +55,257 @@
                     <span class="selected"></span>
                 </a>
             </li>
+
+            <%-- <c:if test="${role == 'manager1'}">--%>
             <li class="">
                 <a href="javascript:;">
                     <i class="icon-file-text"></i>
-                    <span class="title">设备</span>
+                    <span class="title">导入信息</span>
                     <span class="arrow "></span>
                 </a>
                 <ul class="sub-menu">
-                 	<li>
-                        <a href="addDevice.action" target="rightFrame">增加设备</a>
+                    <li>
+                        <a href="addDevice.action" target="rightFrame">导入学生信息</a>
                     </li>
                     <li>
-                        <a href="findAllDevice.action" target="rightFrame">全部显示</a>
+                        <a href="addDevice.action" target="rightFrame">导入导师信息</a>
                     </li>
-                    <c:forEach items="${parameterlist}" var="parameter">
-                    	<li>
-		                    <a href="javascript:;">
-		                   		 <i class="icon-file-text"></i>
-		                  		  <span class="title">${parameter.deviceType}</span>
-		                   		 <span class="arrow "></span>
-		             		 </a>
-		             		 <ul class="sub-menu">
-		             		  <li>
-                   	 			<a href="findDeviceByTypeAndNorm.action?deviceType=${parameter.deviceType}&deviceNorm=大类" target="rightFrame">大类</a>
-                   			 </li>  
-                   		 	 <li>
-                   	 			<a href="findDeviceByTypeAndNorm.action?deviceType=${parameter.deviceType}&deviceNorm=中类" target="rightFrame">中类</a>
-                   		 	</li> 
-                   		 	 <li>
-                   	 			<a href="findDeviceByTypeAndNorm.action?deviceType=${parameter.deviceType}&deviceNorm=小类" target="rightFrame">小类</a>
-                   		 	</li> 
-		             		 </ul>
-		             	 </li>
-                                
-                     </c:forEach>
                 </ul>
             </li>
-            
+
             <li class="">
                 <a href="javascript:;">
                     <i class="icon-file-text"></i>
-                    <span class="title">变电站</span>
+                    <span class="title">导出信息</span>
                     <span class="arrow "></span>
                 </a>
+
                 <ul class="sub-menu">
-                <li>
+                    <li>
+                        <a href="addUnitInterval.action" target="rightFrame">导出全部导师选择信息</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
                 <a href="javascript:;">
                     <i class="icon-file-text"></i>
-                    <span class="title">增加</span>
+                    <span class="title">信息维护管理</span>
                     <span class="arrow "></span>
                 </a>
                 <ul class="sub-menu">
-               		 <li>
-                        <a href="addUnitInterval.action" target="rightFrame">增加单元间隔</a>
+                    <li class="">
+                        <a href="javascript:;">
+                            <i class="icon-file-text"></i>
+                            <span class="title">学生信息维护</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                            </li>
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">修改密码</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="/power_manager/view/AddSubstation.jsp" target="rightFrame">增加变电站</a>
+
+
+                    <li class="">
+                        <a href="javascript:;">
+                            <i class="icon-file-text"></i>
+                            <span class="title">导师信息维护</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                            </li>
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">修改密码</a>
+                            </li>
+                        </ul>
                     </li>
+                    <li class="">
+                        <a href="javascript:;">
+                            <i class="icon-file-text"></i>
+                            <span class="title">学生负责人信息维护</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                            </li>
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">修改密码</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;">
+                            <i class="icon-file-text"></i>
+                            <span class="title">学科专业信息维护</span>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="javascript:;">
+                    <i class="icon-file-text"></i>
+                    <span class="title">系统功能管理</span>
+                    <span class="arrow "></span>
+                </a>
+
+                <ul class="sub-menu">
+
+                </ul>
+            </li>
+            <%-- </c:if>--%>
+
+            <c:if test="${role == 'student'}">
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">查看导师信息</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">查看本专业导师信息</a>
+                        </li>
                     </ul>
                 </li>
-                	<li>
-		                <a href="javascript:;">
-		                    <i class="icon-file-text"></i>
-		                    <span class="title">所有变电站</span>
-		                    <span class="arrow "></span>
-		                </a>
-		                <ul class="sub-menu">
-	                    <c:forEach items="${substationlist}" var="substation">
-	                          <li>
-	                   	 			<a href="findUnitIntervalBySubstationNo.action?substationNo=${substation.substationNo}" target="rightFrame">${substation.substationName}(${substation.substationNo})</a>
-	                   		 </li>         
-	                     </c:forEach>
-	                     </ul>
-                     </li>
-                </ul>
-            </li>
-            <c:if test="${user == 'manager'}">
-             <li class="">
-                <a href="javascript:;">
-                    <i class="icon-file-text"></i>
-                    <span class="title">审核</span>
-                    <span class="arrow "></span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                   	 	<a href="findAuditingDevice.action" target="rightFrame">设备审核</a>
-                   	 	<!-- <a href="findAuditingUnitInterval.action" target="rightFrame">单元间隔审核</a>
-                   	 	<a href="findAuditingSubstation.action" target="rightFrame">变电站审核</a> -->
-                   </li>         
-                </ul>
-            </li>
+
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">志愿管理</span>
+                        <span class="arrow "></span>
+                    </a>
+
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addUnitInterval.action" target="rightFrame">填报志愿</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">个人信息维护</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">修改密码</a>
+                        </li>
+                    </ul>
+                </li>
             </c:if>
-            </ul>
-            </div>
+            <c:if test="${role == 'teacher'}">
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">查看学生志愿填报情况</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">查看学生信息</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">学生志愿管理</span>
+                        <span class="arrow "></span>
+                    </a>
+
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addUnitInterval.action" target="rightFrame">筛选预选学生</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">个人信息维护</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">修改密码</a>
+                        </li>
+                    </ul>
+                </li>
+            </c:if>
+            <c:if test="${role == 'manager2'}">
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">查看志愿填报情况</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">学生选择导师</a>
+                        </li>
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">导师选择学生</a>
+                        </li>
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">学生没有备选</a>
+                        </li>
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">导师没有被选</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">志愿管理</span>
+                        <span class="arrow "></span>
+                    </a>
+
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addUnitInterval.action" target="rightFrame">志愿确认</a>
+                        </li>
+                        <li>
+                            <a href="addUnitInterval.action" target="rightFrame">导出志愿信息</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">个人信息维护</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addDevice.action" target="rightFrame">修改密码</a>
+                        </li>
+                    </ul>
+                </li>
+            </c:if>
+
+        </ul>
+    </div>
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
