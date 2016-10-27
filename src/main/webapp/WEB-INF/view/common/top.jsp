@@ -62,7 +62,6 @@
     <!-- END TOP NAVIGATION BAR -->
 </div>
 
-
 <script src="/js/backstage/jquery-1.10.1.min.js" type="text/javascript"></script>
 <script src="/js/backstage/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
