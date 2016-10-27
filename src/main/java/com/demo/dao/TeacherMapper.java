@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface TeacherMapper {
     @Delete({
         "delete from teacher",
@@ -60,11 +62,20 @@ public interface TeacherMapper {
 
     @Select({
             "select",
-            "count(*)",
+            "*",
             "from teacher",
             "where teacher_id = #{0}",
             "and teacher_pwd = #{1}"
     })
+    @ResultMap("BaseResultMap")
+    Teacher isExist(String userName,String password);
 
-    int isExist(String userName,String password);
+    @Select({
+            "select",
+            "*",
+            "from teacher",
+            "where major_id = #{0}"
+    })
+    @ResultMap("BaseResultMap")
+    List<Teacher> teacherInfoByMajorId(String majorId);
 }

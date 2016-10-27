@@ -1,6 +1,7 @@
 package com.demo.serviceImpl;
 
 import com.demo.dao.StudentMapper;
+import com.demo.entity.Student;
 import com.demo.service.StudentService;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,11 @@ public class StudentServiceImpl implements StudentService{
     @Resource
     private StudentMapper studentDao;
 
-    public int isExist(String userName,String password){
+    public Student isExist(String userName, String password){
         return studentDao.isExist(userName,password);
+    }
+
+    public int editPassword(Student student){
+        return studentDao.editPassword(student);
     }
 }

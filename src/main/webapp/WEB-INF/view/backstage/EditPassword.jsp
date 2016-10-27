@@ -17,8 +17,25 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
 </head>
 <!-- END HEAD -->
+<script>
+    function editPassword() {
+        var pwd = document.getElementById("pwd").value;
+        var oldPassword = hex_md5(editForm.oldPassword.value);
+        var newPassword = editForm.newPassword.value;
+        var checkPassword = editForm.checkPassword.value;
+        if(oldPassword != pwd){
+            alert("初始密码不正确，请重新输入！")
+        }else if(newPassword != checkPassword){
+            alert("新密码与确认密码不一致，请重新输入！")
+        }else{
+            editForm.submit();
+        }
+    }
+
+</script>
 <!-- BEGIN BODY -->
 <body style="background-color: white">
+<input type="hidden" value="${student.studentPwd}" id="pwd" name="pwd">
 <!-- BEGIN CONTAINER -->
 <div class="page-container row-fluid">
     <!-- BEGIN PAGE -->
@@ -29,16 +46,16 @@
             <div class="row-fluid">
                 <div class="span12">
                     <h3 class="page-title">
-                    	  密码修改：${teacherList.get(0).teacherId}
+                    	  密码修改：
                     </h3>
                     <ul class="breadcrumb">
                         <li>
                             <i class="icon-home"></i>
-                            <a href="">主页</a>
+                            <a href="/index/backMain">主页</a>
                             <span class="icon-angle-right"></span>
                         </li>
                         <li>
-                            <a href="#">变电站添加</a>
+                            <a href="#">修改用户密码</a>
                         </li> 
                     </ul>
                 </div>
@@ -52,24 +69,25 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="portlet_tab1" style="margin-left: -50px">
                                     <!-- BEGIN FORM-->
-                                    <form action="addSubstation.action" target="rightFrame" method="post" class="form-horizontal" >
+                                    <form action="/student/editPassword?student=${student}" name="editForm" id="editForm" target="rightFrame" method="post" class="form-horizontal" >
                                         <div class="row-fluid">
                                             <div class="span6 ">
                                                 <div class="control-group " >
-                                                    <label class="control-label">变电站编号</label>
+                                                    <label class="control-label">原始密码</label>
                                                     <div class="controls">
-                                                        <input type="text" name="substation.substationNo" id="substationNo" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
+                                                        <input type="password" name="oldPassword" id="oldPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
                                                         <strong id="div_show" style="font-size:14px;color:red;align:center;line-height:34px;height:34px;"></strong>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="row-fluid">
                                             <div class="span6 ">
                                                 <div class="control-group " >
-                                                    <label class="control-label">变电站名称</label>
+                                                    <label class="control-label">新密码</label>
                                                     <div class="controls">
-                                                        <input type="text" name="substation.substationName" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
+                                                        <input type="password" name="newPassworde" id="newPassworde" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,47 +95,18 @@
                                         <div class="row-fluid">
                                             <div class="span6 ">
                                                 <div class="control-group " >
-                                                    <label class="control-label">电压等级</label>
+                                                    <label class="control-label">确认密码</label>
                                                     <div class="controls">
-                                                        <select style="width: 320px;height: 34px" name="substation.voltageGrade"  id="voltageGrade"  class="select_field">  
-									                        <option value=""  style="color:#999999">-请选择-</option>  
-									                        
-									                        <option value="35KV">35KV</option> 
-									                        <option value="110KV">110KV</option> 
-									                        <option value="220KV">220KV</option> 
-									                        <option value="500KV">500KV</option> 
-									                        <option value="800KV">800KV</option> 
-									                        <option value="1000KV">1000KV</option> 
-									                    </select>
-									                    <font color="red">*</font>
+                                                        <input type="password" name="checkPassworde" id="checkPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div
                                         <div class="row-fluid">
-                                            <div class="span6 ">
-                                                <div class="control-group " >
-                                                    <label class="control-label">主变数量</label>
-                                                    <div class="controls">
-                                                        <input type="number" name="substation.voltageNumber" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            
-                                            <div class="span6 ">
-                                                <div class="control-group " >
-                                                    <label class="control-label">变电站地址</label>
-                                                    <div class="controls">
-                                                        <input type="text" name="substation.substationAddress" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div class="form-actions">
-                                            <button type="submit" class="btn blue" id="submit"><i class="icon-ok"></i>提交</button>
+                                            <button type="button" class="btn blue" id="submit" onclick="editPassword()"><i class="icon-ok"></i>提交</button>
                                             <button type="reset" class="btn">重置</button>
                                         </div>
                                     </form>
@@ -152,6 +141,7 @@
 <script src="/js/backstage/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="/js/backstage/jquery.cookie.min.js" type="text/javascript"></script>
 <script src="/js/backstage/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="/js/backstage/MD5.js" type="text/javascript" ></script>
 <!-- END CORE PLUGINS -->
 <script src="../media/js/app.js"></script>
 <script>

@@ -177,7 +177,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="addDevice.action" target="rightFrame">查看本专业导师信息</a>
+                            <a href="/student/teacherInfo?majorId=${student.majorId}" target="rightFrame">查看本专业导师信息</a>
                         </li>
                     </ul>
                 </li>
@@ -204,7 +204,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="addDevice.action" target="rightFrame">修改密码</a>
+                            <a href="/student/editPasswordView?" target="rightFrame">修改密码</a>
                         </li>
                     </ul>
                 </li>

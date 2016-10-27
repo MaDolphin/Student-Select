@@ -73,11 +73,25 @@ public interface StudentMapper {
 
     @Select({
             "select",
-            "count(*)",
+            "*",
             "from student",
             "where student_id = #{0}",
             "and student_pwd = #{1}"
     })
+    @ResultMap("BaseResultMap")
+    Student isExist(String userName,String password);
 
-    int isExist(String userName,String password);
+    @Update({
+            "update student",
+            "set person_id = #{personId,jdbcType=VARCHAR},",
+            "student_name = #{studentName,jdbcType=VARCHAR},",
+            "student_pwd = #{studentPwd,jdbcType=VARCHAR},",
+            "student_sex = #{studentSex,jdbcType=VARCHAR},",
+            "student_birthday = #{studentBirthday,jdbcType=VARCHAR},",
+            "major_id = #{majorId,jdbcType=VARCHAR},",
+            "student_tel = #{studentTel,jdbcType=VARCHAR},",
+            "teacher_id = #{teacherId,jdbcType=VARCHAR}",
+
+    })
+    int editPassword(Student student);
 }
