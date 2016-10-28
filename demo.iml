@@ -112,6 +112,10 @@
     <orderEntry type="library" name="Maven: org.apache.poi:ooxml-schemas:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" level="project" />
+    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.5" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" level="project" />
     <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.xbean:xbean-spring:3.18" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.3" level="project" />

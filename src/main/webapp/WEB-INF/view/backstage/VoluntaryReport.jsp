@@ -45,7 +45,7 @@
             </div>
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
-            <div class="row-fluid">
+            <%--<div class="row-fluid">--%>
                 <div class="span12">
                     <div class="portlet-body form" style="margin-top: 40px;">
                         <div class="tabbable portlet-tabs">
@@ -60,28 +60,44 @@
                                                     <label class="control-label">第一志愿</label>
                                                     <div class="controls">
                                                         <select style="width: 320px;height: 34px" name="first_intention"  id="first_intention"  class="select_field" onchange="getDeviceModel(this)">
-									                    </select>
-									                    <font color="red">*</font>
+                                                            <option value=""  style="color:#999999">-请选择第一志愿-</option>
+                                                            <c:forEach items="${teacherList}" var="teacherList" >
+                                                                <option value="${teacherList.teacherName}">${teacherList.teacherName}</option>
+                                                            </c:forEach>
+                                                        </select>
+
                                                     </div>
                                                 </div>
                                             </div>
+                                            </div>
+                                        <div class="row-fluid">
                                             <div class="span6 ">
                                                 <div class="control-group " >
                                                     <label class="control-label">第二志愿</label>
                                                     <div class="controls">
                                                         <select style="width: 320px;height: 34px" name="second_intention"  id="second_intention"  class="select_field" onchange="getDeviceModel(this)">
+                                                            <option value=""  style="color:#999999">-请选择第二志愿-</option>
+                                                            <c:forEach items="${teacherList}" var="teacherList" >
+                                                                <option value="${teacherList.teacherName}">${teacherList.teacherName}</option>
+                                                            </c:forEach>
                                                         </select>
-                                                        <font color="red">*</font>
+
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row-fluid">
                                             <div class="span6 ">
                                                 <div class="control-group " >
                                                     <label class="control-label">第三志愿</label>
                                                     <div class="controls">
                                                         <select style="width: 320px;height: 34px" name="third_intention"  id="third_intention"  class="select_field" onchange="getDeviceModel(this)">
+                                                            <option value=""  style="color:#999999">-请选择第三志愿-</option>
+                                                            <c:forEach items="${teacherList}" var="teacherList" >
+                                                                <option value="${teacherList.teacherName}">${teacherList.teacherName}</option>
+                                                            </c:forEach>
                                                         </select>
-                                                        <font color="red">*</font>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,18 +152,18 @@
 
     $(document).ready(function() {
         // 填充志愿选择
-        $("#first_intention").FillOptions(
-                "listProjectMemberRefOption!getMemberDepartmentOption.action",
-                {
-                    datatype: "json",
-                    textfield: "teacher",
-                    valuefiled: "teacher",
-                    selectedindex: 0,//填充并选中第1项
-                    keepold: true//填充并且保留原有项
-                }
-        );
+        <%--$("#first_intention").FillOptions(--%>
+                <%--"/student/fillTeacher?majorId=${student.majorId}",--%>
+                <%--{--%>
+                    <%--datatype: "json",--%>
+                    <%--textfield: "teacher",--%>
+                    <%--valuefiled: "teacher",--%>
+                    <%--selectedindex: 0,//填充并选中第1项--%>
+                    <%--keepold: true//填充并且保留原有项--%>
+                <%--}--%>
+        <%--);--%>
 
-        $("#first_intention").AddOption("< - - 请选择第一志愿 - - >", "-1", true, 0);//最上端插入一个文本为“请选择部门“，值为”-1“的列表项，并且是选中状态
+        <%--$("#first_intention").AddOption("< - - 请选择第一志愿 - - >", "-1", true, 0);//最上端插入一个文本为“请选择部门“，值为”-1“的列表项，并且是选中状态--%>
     });
 </script>
         <script type="text/javascript">

@@ -1,18 +1,20 @@
 package com.demo.controller;
 
-import com.alibaba.fastjson.JSONArray;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import com.demo.entity.Student;
 import com.demo.entity.Teacher;
 import com.demo.service.StudentService;
 import com.demo.service.TeacherService;
 import com.demo.util.Md5;
+import org.apache.http.HttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +29,10 @@ public class StudentController {
     @Resource
     private TeacherService teacherService;
 
-    List<Teacher> teacherList;
+
     @RequestMapping("/teacherInfo")
     public String teacherInfo(HttpSession session,String majorId) {
-        teacherList = teacherService.teacherInfoByMajorId(majorId);
+        List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
         session.setAttribute("teacherList",teacherList);
         return "/backstage/AddSubstation";
     }
@@ -48,44 +50,39 @@ public class StudentController {
         return "redirect:/student/editSuccess";
     }
 
+    @RequestMapping("/voluntaryReport")
+    public String voluntaryReport() {
+        return "/backstage/VoluntaryReport";
+    }
+
     @RequestMapping("/editSuccess")
     public String editSuccess() {
         return "/common/right";
     }
 
     @RequestMapping("/fillTeacher")
-    public String fillTeacher (HttpSession session){
+    public String fillTeacher (HttpSession session,String majorId){
+        List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
+        session.setAttribute("teacherList",teacherList);
+        return "/backstage/VoluntaryReport";
+//            String tempStr[] = null;
+//            List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
+////            session.setAttribute("teacherList",teacherList);
+//            List<String> optionTeacher = new ArrayList<String>();
+//            for(int i=0;i<teacherList.size();i++){
+//                if(!optionTeacher.contains(teacherList.get(i).getTeacherName())){
+//                    optionTeacher.add(teacherList.get(i).getTeacherName());
+//                }
+//            }
+//            tempStr= new String[optionTeacher.size()+1];
+//            tempStr[0] = "{teacher:'--请选择--'}";
+//            for(int i=1;i<optionTeacher.size()+1;i++){
+//                tempStr[i] = "{teacher:'"+optionTeacher.get(i-1)+"'}";
+//            }
+//        JSONArray jsonObjectFromArray = JSONArray.fromObject(tempStr);
+////        HttpServletResponse response = ServletActionContext.getResponse();
+////        writeJSONArrayToResponse(response,jsonObjectFromArray);
+//       return jsonObjectFromArray.toString();
 
-        String tempStr[] = null;
-//        List<Teacher> teacherList =  session.getAttribute("teacherList");
-
-            List<String> optionTeacher = new ArrayList<String>();
-
-            for(int i=0;i<teacherList.size();i++){
-
-                if(!optionTeacher.contains(teacherList.get(i).getTeacherName())){
-
-                    optionTeacher.add(teacherList.get(i).getTeacherName());
-                }
-            }
-
-            tempStr= new String[optionTeacher.size()+1];
-
-            tempStr[0] = "{teacher:'--请选择--'}";
-
-            for(int i=1;i<optionTeacher.size()+1;i++){
-
-                tempStr[i] = "{teacher:'"+optionTeacher.get(i-1)+"'}";
-            }
-
-
-
-        JSONArray jsonObjectFromArray = JSONArray.fromObject(tempStr);
-
-        HttpServletResponse response = ServletActionContext.getResponse();
-
-        writeJSONArrayToResponse(response,jsonObjectFromArray);
-
-        return "redirect:/student/editSuccess";
     }
 }

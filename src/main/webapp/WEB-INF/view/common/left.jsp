@@ -191,7 +191,7 @@
 
                     <ul class="sub-menu">
                         <li>
-                            <a href="addUnitInterval.action" target="rightFrame">填报志愿</a>
+                            <a href="/student/fillTeacher?majorId=${student.majorId}" target="rightFrame">填报志愿</a>
                         </li>
                     </ul>
                 </li>
@@ -204,7 +204,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="/student/editPasswordView?" target="rightFrame">修改密码</a>
+                            <a href="/student/editPasswordView?studentId=${student.studentId}" target="rightFrame">修改密码</a>
                         </li>
                     </ul>
                 </li>
