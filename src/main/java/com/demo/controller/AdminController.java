@@ -2,8 +2,10 @@ package com.demo.controller;
 
 import com.demo.entity.Intention;
 import com.demo.entity.Student;
+import com.demo.entity.Teacher;
 import com.demo.service.ManagerService;
 import com.demo.service.StudentService;
+import com.demo.service.TeacherService;
 import com.demo.util.Md5;
 import org.springframework.batch.core.step.tasklet.SystemCommandException;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,8 @@ public class AdminController {
     private ManagerService managerService;
     @Resource
     private StudentService studentService;
+    @Resource
+    private TeacherService teacherService;
 
     @RequestMapping("/batchImport")
     public String batchImport(){
@@ -84,8 +88,11 @@ public class AdminController {
     @RequestMapping("/volunteerRecognition")
     public String volunteerRecognition(String studentId, HttpSession session,String selectTeacher){
         Student student = studentService.findStudentByStudentId(studentId);
+        Teacher teacher = teacherService.queryTeacherByTeacherId(selectTeacher);
         student.setTeacherId(selectTeacher);
         studentService.updateStudent(student);
+        teacher.setCollageSurplus(teacher.getCollageSurplus()-1);
+        teacherService.updateTeacher(teacher);
         return "redirect:/admin/volunteerRecognitionView";
     }
 

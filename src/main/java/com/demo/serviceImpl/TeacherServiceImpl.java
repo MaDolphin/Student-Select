@@ -96,4 +96,9 @@ public class TeacherServiceImpl implements TeacherService{
     public Teacher queryTeacherByTeacherId(String teacherId) {
         return teacherDao.selectByPrimaryKey(teacherId);
     }
+
+    @Override
+    public void updateTeacher(Teacher teacher){
+        teacherDao.updateByPrimaryKey(teacher);
+    }
 }

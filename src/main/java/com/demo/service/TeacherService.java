@@ -17,4 +17,6 @@ public interface TeacherService {
     public void acceptStudent(int intentionId,int intentionOrder,String teacherId);
     public void refuseStudent(int intentionId,int intentionOrder,String teacherId);
     public Teacher queryTeacherByTeacherId(String teacherId);
+    public void updateTeacher(Teacher teacher);
+
 }
