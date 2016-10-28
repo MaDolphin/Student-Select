@@ -1,7 +1,9 @@
 package com.demo.service;
 
+import com.demo.entity.Intention;
 import com.demo.entity.Teacher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,4 +13,7 @@ import java.util.List;
 public interface TeacherService {
     public Teacher isExist(String userName, String password);
     public List<Teacher> teacherInfoByMajorId(String majorId);
+    public ArrayList<Intention> queryIntentionByTeacher(String teacherId);
+    public void acceptStudent(int intentionId,int intentionOrder,String teacherId,String studentId);
+    public void refuseStudent(int intentionId,int intentionOrder,String teacherId,String studentId);
 }
