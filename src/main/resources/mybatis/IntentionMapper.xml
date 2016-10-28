@@ -29,6 +29,7 @@
       <result column="teacher_pwd" property="teacherPwd" jdbcType="VARCHAR" />
       <result column="major_id" property="majorId" jdbcType="VARCHAR" />
       <result column="teacher_surplus" property="teacherSurplus" jdbcType="INTEGER" />
+      <result column="collage_surplus" property="collageSurplus" jdbcType="INTEGER" />
     </collection>
 
   </resultMap>

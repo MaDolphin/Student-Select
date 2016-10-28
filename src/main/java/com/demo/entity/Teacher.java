@@ -11,6 +11,8 @@ public class Teacher {
 
     private Integer teacherSurplus;
 
+    private Integer collageSurplus;
+
     private String teacherIntroduction;
 
     public String getTeacherId() {
@@ -51,6 +53,14 @@ public class Teacher {
 
     public void setTeacherSurplus(Integer teacherSurplus) {
         this.teacherSurplus = teacherSurplus;
+    }
+
+    public Integer getCollageSurplus() {
+        return collageSurplus;
+    }
+
+    public void setCollageSurplus(Integer collageSurplus) {
+        this.collageSurplus = collageSurplus;
     }
 
     public String getTeacherIntroduction() {

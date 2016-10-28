@@ -7,12 +7,13 @@
     <result column="teacher_pwd" property="teacherPwd" jdbcType="VARCHAR" />
     <result column="major_id" property="majorId" jdbcType="VARCHAR" />
     <result column="teacher_surplus" property="teacherSurplus" jdbcType="INTEGER" />
+    <result column="collage_surplus" property="collageSurplus" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.demo.entity.Teacher" extends="BaseResultMap" >
     <result column="teacher_introduction" property="teacherIntroduction" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    teacher_id, teacher_name, teacher_pwd, major_id, teacher_surplus
+    teacher_id, teacher_name, teacher_pwd, major_id, teacher_surplus, collage_surplus
   </sql>
   <sql id="Blob_Column_List" >
     teacher_introduction
@@ -35,6 +36,9 @@
       <if test="teacherSurplus != null" >
         teacher_surplus,
       </if>
+      <if test="collageSurplus != null" >
+        collage_surplus,
+      </if>
       <if test="teacherIntroduction != null" >
         teacher_introduction,
       </if>
@@ -55,6 +59,9 @@
       <if test="teacherSurplus != null" >
         #{teacherSurplus,jdbcType=INTEGER},
       </if>
+      <if test="collageSurplus != null" >
+        #{collageSurplus,jdbcType=INTEGER},
+      </if>
       <if test="teacherIntroduction != null" >
         #{teacherIntroduction,jdbcType=LONGVARCHAR},
       </if>
@@ -74,6 +81,9 @@
       </if>
       <if test="teacherSurplus != null" >
         teacher_surplus = #{teacherSurplus,jdbcType=INTEGER},
+      </if>
+      <if test="collageSurplus != null" >
+        collage_surplus = #{collageSurplus,jdbcType=INTEGER},
       </if>
       <if test="teacherIntroduction != null" >
         teacher_introduction = #{teacherIntroduction,jdbcType=LONGVARCHAR},
