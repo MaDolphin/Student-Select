@@ -22,6 +22,15 @@
       <result column="student_tel" property="studentTel" jdbcType="VARCHAR" />
       <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
     </association>
+
+    <collection property="teacher" ofType="com.demo.entity.Teacher">
+      <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+      <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+      <result column="teacher_pwd" property="teacherPwd" jdbcType="VARCHAR" />
+      <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="teacher_surplus" property="teacherSurplus" jdbcType="INTEGER" />
+    </collection>
+
   </resultMap>
   <sql id="Base_Column_List" >
     id, student_id, first_intention, second_intention, third_intention, first_opttype, 
