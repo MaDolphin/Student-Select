@@ -1,5 +1,7 @@
 package com.demo.entity;
 
+import java.util.List;
+
 public class Intention {
     private Integer id;
 
@@ -19,13 +21,13 @@ public class Intention {
     
     private Student student;
 
-    private Teacher teacher;
+    private List<Teacher> teacher;
 
-    public Teacher getTeacher() {
+    public List<Teacher> getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(List<Teacher> teacher) {
         this.teacher = teacher;
     }
 

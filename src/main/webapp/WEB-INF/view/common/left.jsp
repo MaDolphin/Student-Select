@@ -191,7 +191,7 @@
 
                     <ul class="sub-menu">
                         <li>
-                            <a href="/student/fillTeacher?majorId=${student.majorId}" target="rightFrame">填报志愿</a>
+                            <a href="/student/fillTeacher?majorId=${student.majorId}&studentId=${student.studentId}" target="rightFrame">填报志愿</a>
                         </li>
                     </ul>
                 </li>

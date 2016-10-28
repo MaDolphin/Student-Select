@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import com.demo.entity.Intention;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.demo.entity.Student;
@@ -29,7 +30,6 @@ public class StudentController {
     @Resource
     private TeacherService teacherService;
 
-
     @RequestMapping("/teacherInfo")
     public String teacherInfo(HttpSession session,String majorId) {
         List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
@@ -50,39 +50,46 @@ public class StudentController {
         return "redirect:/student/editSuccess";
     }
 
-    @RequestMapping("/voluntaryReport")
-    public String voluntaryReport() {
-        return "/backstage/VoluntaryReport";
-    }
-
     @RequestMapping("/editSuccess")
     public String editSuccess() {
         return "/common/right";
     }
 
     @RequestMapping("/fillTeacher")
-    public String fillTeacher (HttpSession session,String majorId){
+    public String fillTeacher (HttpSession session,String majorId,String studentId){
+        List<Intention> intentionList = studentService.findIntention(studentId);
         List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
+//        Teacher teacher = teacherService.teacherInfoByTeacherId(majorId);
+        int flag = 0;
         session.setAttribute("teacherList",teacherList);
+        if(intentionList.size()!=0){
+            flag = 1;
+            session.setAttribute("intentionList",intentionList);
+        }
+        session.setAttribute("flag",flag);
         return "/backstage/VoluntaryReport";
-//            String tempStr[] = null;
-//            List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
-////            session.setAttribute("teacherList",teacherList);
-//            List<String> optionTeacher = new ArrayList<String>();
-//            for(int i=0;i<teacherList.size();i++){
-//                if(!optionTeacher.contains(teacherList.get(i).getTeacherName())){
-//                    optionTeacher.add(teacherList.get(i).getTeacherName());
-//                }
-//            }
-//            tempStr= new String[optionTeacher.size()+1];
-//            tempStr[0] = "{teacher:'--请选择--'}";
-//            for(int i=1;i<optionTeacher.size()+1;i++){
-//                tempStr[i] = "{teacher:'"+optionTeacher.get(i-1)+"'}";
-//            }
-//        JSONArray jsonObjectFromArray = JSONArray.fromObject(tempStr);
-////        HttpServletResponse response = ServletActionContext.getResponse();
-////        writeJSONArrayToResponse(response,jsonObjectFromArray);
-//       return jsonObjectFromArray.toString();
+    }
 
+    @RequestMapping("/voluntaryReport")
+    public String voluntaryReport(String studentId,String first_intention,String second_intention,String third_intention,int flag,String majorId) {
+
+        if(flag == 0){
+            Intention intention = new Intention();
+            intention.setStudentId(studentId);
+            intention.setFirstIntention(first_intention);
+            intention.setSecondIntention(second_intention);
+            intention.setThirdIntention(third_intention);
+            intention.setFirstOpttype(0);
+            intention.setSecondOpttype(0);
+            intention.setThirdOpttype(0);
+            studentService.addIntention(intention);
+        }else if(flag == 1){
+            Intention intention = studentService.findIntentionByStudentId(studentId);
+            intention.setFirstIntention(first_intention);
+            intention.setSecondIntention(second_intention);
+            intention.setThirdIntention(third_intention);
+            studentService.updateIntention(intention);
+        }
+        return "redirect:/student/fillTeacher?studentId="+studentId+"&majorId="+majorId;
     }
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface IntentionMapper {
     @Delete({
@@ -66,4 +67,26 @@ public interface IntentionMapper {
     })
     @ResultMap("BaseResultMap")
     ArrayList<Intention> queryIntentionByTeacher(String teacherId);
+
+    @Select({
+            "select",
+            "*",
+            "from intention i",
+            "inner join teacher t on i.first_intention = t.teacher_id",
+            "or i.second_intention = t.teacher_id",
+            "or i.third_intention = t.teacher_id",
+            "where i.student_id = #{0}",
+    })
+    @ResultMap("BaseResultMap")
+    List<Intention> findIntention(String studentId);
+
+    @Select({
+            "select",
+            "*",
+            "from intention",
+            "where student_id = #{0}"
+    })
+    @ResultMap("BaseResultMap")
+    Intention findIntentionByStudentId(String studentId);
+
 }
