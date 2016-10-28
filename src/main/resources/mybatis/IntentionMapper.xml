@@ -10,6 +10,18 @@
     <result column="first_opttype" property="firstOpttype" jdbcType="INTEGER" />
     <result column="second_opttype" property="secondOpttype" jdbcType="INTEGER" />
     <result column="third_opttype" property="thirdOpttype" jdbcType="INTEGER" />
+
+    <association property="student" javaType="com.demo.entity.Student">
+      <id column="student_id" property="studentId" jdbcType="VARCHAR" />
+      <result column="person_id" property="personId" jdbcType="VARCHAR" />
+      <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+      <result column="student_pwd" property="studentPwd" jdbcType="VARCHAR" />
+      <result column="student_sex" property="studentSex" jdbcType="VARCHAR" />
+      <result column="student_birthday" property="studentBirthday" jdbcType="VARCHAR" />
+      <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="student_tel" property="studentTel" jdbcType="VARCHAR" />
+      <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List" >
     id, student_id, first_intention, second_intention, third_intention, first_opttype, 

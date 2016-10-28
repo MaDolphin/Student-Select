@@ -11,6 +11,8 @@
     <result column="major_id" property="majorId" jdbcType="VARCHAR" />
     <result column="student_tel" property="studentTel" jdbcType="VARCHAR" />
     <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+
+
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.demo.entity.Student" extends="BaseResultMap" >
     <result column="student_comment" property="studentComment" jdbcType="LONGVARCHAR" />
