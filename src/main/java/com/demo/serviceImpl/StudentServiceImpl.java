@@ -51,4 +51,12 @@ public class StudentServiceImpl implements StudentService{
     public Intention findIntentionByStudentId(String studentid){
         return intentionDao.findIntentionByStudentId(studentid);
     }
+
+    public Student findStudentByStudentId(String studentId){
+        return studentDao.findStudentByStudentId(studentId);
+    }
+
+    public void updateStudent(Student student){
+        studentDao.updateByPrimaryKey(student);
+    }
 }

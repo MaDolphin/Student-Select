@@ -68,7 +68,7 @@
                                                         <c:forEach items="${intentionList}" var="intentionList">
                                                             <c:forEach items="${intentionList.teacher}" var="teacherList">
                                                             <c:if test="${teacherList.teacherId == intentionList.firstIntention}">
-                                                            <option value="${teacherList.teacherId}" style="color:#999999" selected>${teacherList.teacherName}</option>
+                                                               <option value="${teacherList.teacherId}" style="color:#999999" selected>${teacherList.teacherName}</option>
                                                             </c:if>
                                                             </c:forEach>
                                                         </c:forEach>

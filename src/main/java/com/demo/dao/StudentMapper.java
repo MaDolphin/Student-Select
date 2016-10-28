@@ -94,4 +94,14 @@ public interface StudentMapper {
             "where student_id = #{studentId,jdbcType=VARCHAR}"
     })
     int editPassword(Student student);
+
+    @Select({
+            "select",
+            "*",
+            "from student",
+            "where student_id = #{0}"
+    })
+    @ResultMap("BaseResultMap")
+    Student findStudentByStudentId(String studentId);
+
 }

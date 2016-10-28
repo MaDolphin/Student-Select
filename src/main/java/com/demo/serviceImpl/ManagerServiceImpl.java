@@ -1,12 +1,7 @@
 package com.demo.serviceImpl;
 
-import com.demo.dao.MajorMapper;
-import com.demo.dao.ManagerMapper;
-import com.demo.dao.StudentMapper;
-import com.demo.dao.TeacherMapper;
-import com.demo.entity.Major;
-import com.demo.entity.Student;
-import com.demo.entity.Teacher;
+import com.demo.dao.*;
+import com.demo.entity.*;
 import com.demo.service.ManagerService;
 import com.demo.util.Md5;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -35,15 +30,16 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Resource
     private ManagerMapper managerDao;
-
     @Resource
     private StudentMapper studentDao;
     @Resource
     private TeacherMapper teacherDao;
     @Resource
     private MajorMapper majorDao;
+    @Resource
+    private IntentionMapper intentionDao;
 
-    public int isExist(String userName,String password,int role){
+    public Manager isExist(String userName, String password, int role){
         return managerDao.isExist(userName,password,role);
     }
 
@@ -340,5 +336,9 @@ public class ManagerServiceImpl implements ManagerService {
         for(int i=0; i<num; i++){
             majorDao.insert(majorList.get(i));
         }
+    }
+
+    public List<Intention> findIntentionByCollegeName(String collegeName){
+        return intentionDao.findIntentionByCollegeName(collegeName);
     }
 }

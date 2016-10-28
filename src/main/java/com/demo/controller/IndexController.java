@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import com.demo.entity.Manager;
 import com.demo.entity.Student;
 import com.demo.entity.Teacher;
 import com.demo.service.ManagerService;
@@ -36,8 +37,10 @@ public class IndexController {
 //        System.out.println("---------"+userName+"   "+password+"   "+identity+"--------");
         password = Md5.Md5(password);
         if (identity.equals("manager1")) {
-            if (managerService.isExist(userName, password, 0) != 0) {
+            if (managerService.isExist(userName, password, 0) != null) {
+                Manager manager1 = managerService.isExist(userName, password,0);
                 session.setAttribute("role", "manager1");
+                session.setAttribute("manager1", manager1);
                 return "/backstage/main";
             }
         } else if (identity.equals("student")) {
@@ -55,8 +58,10 @@ public class IndexController {
                 return "/backstage/main";
             }
         } else if (identity.equals("manager2")) {
-            if (managerService.isExist(userName, password, 1) != 0) {
+            if (managerService.isExist(userName, password, 1) != null) {
+                Manager manager2 = managerService.isExist(userName, password,1);
                 session.setAttribute("role", "manager2");
+                session.setAttribute("manager2", manager2);
                 return "/backstage/main";
             }
         }

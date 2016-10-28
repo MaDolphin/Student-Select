@@ -16,7 +16,9 @@ public interface StudentService {
     public List<Intention> findIntention(String studentId);
     public void addIntention(Intention intention);
     public void updateIntention(Intention intention);
-    public Intention findIntentionByStudentId(String studentid);
+    public Intention findIntentionByStudentId(String studentId);
+    public Student findStudentByStudentId(String studentId);
+    public void updateStudent(Student student);
 
 
 }

@@ -252,7 +252,7 @@
                             <a href="addDevice.action" target="rightFrame">导师选择学生</a>
                         </li>
                         <li>
-                            <a href="addDevice.action" target="rightFrame">学生没有备选</a>
+                            <a href="addDevice.action" target="rightFrame">学生没有被选</a>
                         </li>
                         <li>
                             <a href="addDevice.action" target="rightFrame">导师没有被选</a>
@@ -269,10 +269,10 @@
 
                     <ul class="sub-menu">
                         <li>
-                            <a href="addUnitInterval.action" target="rightFrame">志愿确认</a>
+                            <a href="/admin/volunteerRecognitionView?collegeName=${manager2.collegeName}" target="rightFrame">志愿确认</a>
                         </li>
                         <li>
-                            <a href="addUnitInterval.action" target="rightFrame">导出志愿信息</a>
+                            <a href="" target="rightFrame">导出志愿信息</a>
                         </li>
                     </ul>
                 </li>

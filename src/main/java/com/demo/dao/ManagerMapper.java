@@ -1,11 +1,14 @@
 package com.demo.dao;
 
+import com.demo.entity.Major;
 import com.demo.entity.Manager;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 public interface ManagerMapper {
     @Delete({
@@ -46,12 +49,13 @@ public interface ManagerMapper {
 
     @Select({
             "select",
-            "count(*)",
+            "*",
             "from manager",
             "where manager_name = #{0}",
             "and manager_pwd = #{1}",
             "and manager_role = #{2}"
     })
+    @ResultMap("BaseResultMap")
+    Manager isExist(String userName,String password,int role);
 
-    int isExist(String userName,String password,int role);
 }

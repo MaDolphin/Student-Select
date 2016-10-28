@@ -1,6 +1,9 @@
 package com.demo.controller;
 
+import com.demo.entity.Intention;
+import com.demo.entity.Student;
 import com.demo.service.ManagerService;
+import com.demo.service.StudentService;
 import com.demo.util.Md5;
 import org.springframework.batch.core.step.tasklet.SystemCommandException;
 import org.springframework.stereotype.Controller;
@@ -10,9 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import static java.lang.System.out;
 
@@ -24,6 +29,8 @@ import static java.lang.System.out;
 public class AdminController {
     @Resource
     private ManagerService managerService;
+    @Resource
+    private StudentService studentService;
 
     @RequestMapping("/batchImport")
     public String batchImport(){
@@ -66,4 +73,20 @@ public class AdminController {
         }
         return "redirect:/admin/batchImport";
     }
+
+    @RequestMapping("/volunteerRecognitionView")
+    public String volunteerRecognitionView(String collegeName, HttpSession session){
+        List<Intention> intentionList = managerService.findIntentionByCollegeName(collegeName);
+        session.setAttribute("intentionList",intentionList);
+        return "/backstage/ShowIntentionByCollege";
+    }
+
+    @RequestMapping("/volunteerRecognition")
+    public String volunteerRecognition(String studentId, HttpSession session,String selectTeacher){
+        Student student = studentService.findStudentByStudentId(studentId);
+        student.setTeacherId(selectTeacher);
+        studentService.updateStudent(student);
+        return "redirect:/admin/volunteerRecognitionView";
+    }
+
 }

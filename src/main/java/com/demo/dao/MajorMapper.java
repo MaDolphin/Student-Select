@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface MajorMapper {
     @Delete({
         "delete from major",
@@ -42,4 +44,13 @@ public interface MajorMapper {
         "where major_id = #{majorId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Major record);
+
+    @Select({
+            "select",
+            "*",
+            "from major",
+            "where major_name = #{0}"
+    })
+    @ResultMap("BaseResultMap")
+    List<Major> findCollegeByCollegeName(String collegeName);
 }

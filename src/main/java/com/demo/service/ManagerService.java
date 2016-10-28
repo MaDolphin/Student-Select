@@ -1,8 +1,6 @@
 package com.demo.service;
 
-import com.demo.entity.Major;
-import com.demo.entity.Student;
-import com.demo.entity.Teacher;
+import com.demo.entity.*;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,7 +11,7 @@ import java.util.List;
  */
 
 public interface ManagerService {
-    public int isExist(String userName,String password,int role);
+    public Manager isExist(String userName, String password, int role);
     public boolean studentFileToDB(MultipartFile file);
     public boolean teacherFileToDB(MultipartFile file);
     public boolean majorFileToDB(MultipartFile file);
@@ -21,4 +19,5 @@ public interface ManagerService {
     public void studentIntoDB(List<Student> studentList);
     public void teacherIntoDB(List<Teacher> teacherList);
     public void majorIntoDB(List<Major> majorList);
+    public List<Intention> findIntentionByCollegeName(String collegeName);
 }
