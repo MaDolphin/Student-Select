@@ -78,4 +78,5 @@ public interface TeacherMapper {
     })
     @ResultMap("BaseResultMap")
     List<Teacher> teacherInfoByMajorId(String majorId);
+
 }

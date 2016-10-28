@@ -213,26 +213,13 @@
                 <li class="">
                     <a href="javascript:;">
                         <i class="icon-file-text"></i>
-                        <span class="title">查看学生志愿填报情况</span>
-                        <span class="arrow "></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="addDevice.action" target="rightFrame">查看学生信息</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="icon-file-text"></i>
                         <span class="title">学生志愿管理</span>
                         <span class="arrow "></span>
                     </a>
 
                     <ul class="sub-menu">
                         <li>
-                            <a href="addUnitInterval.action" target="rightFrame">筛选预选学生</a>
+                            <a href="/teacher/showIntentionByTeacher?teacherId=${teacher.teacherId}" target="rightFrame">筛选预选学生</a>
                         </li>
                     </ul>
                 </li>

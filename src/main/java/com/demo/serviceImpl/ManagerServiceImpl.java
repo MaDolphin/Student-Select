@@ -154,7 +154,9 @@ public class ManagerServiceImpl implements ManagerService {
                             case 2 : teacher.setMajorId(cellValue);break;
                             case 3 : teacher.setTeacherPwd(Md5.Md5(cellValue));break;
                             case 4 : teacher.setTeacherIntroduction(cellValue);break;
-                            case 5 : teacher.setTeacherSurplus(Integer.valueOf(cellValue));break;
+                            case 5 : teacher.setTeacherSurplus(Integer.valueOf(cellValue));
+                                     teacher.setCollageSurplus(Integer.valueOf(cellValue));
+                                     break;
                         }
                     }
                     teacherList.add(teacher);

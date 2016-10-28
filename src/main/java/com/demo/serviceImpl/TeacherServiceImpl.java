@@ -35,7 +35,7 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public void acceptStudent(int intentionId,int intentionOrder,String teacherId, String studentId) {
+    public void acceptStudent(int intentionId,int intentionOrder,String teacherId) {
         try {
             Intention intention = intentionDao.selectByPrimaryKey(intentionId);
             Teacher teacher = teacherDao.selectByPrimaryKey(teacherId);
@@ -64,7 +64,7 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public void refuseStudent(int intentionId,int intentionOrder,String teacherId, String studentId) {
+    public void refuseStudent(int intentionId,int intentionOrder,String teacherId) {
         try {
             Intention intention = intentionDao.selectByPrimaryKey(intentionId);
             Teacher teacher = teacherDao.selectByPrimaryKey(teacherId);
@@ -90,5 +90,10 @@ public class TeacherServiceImpl implements TeacherService{
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Teacher queryTeacherByTeacherId(String teacherId) {
+        return teacherDao.selectByPrimaryKey(teacherId);
     }
 }
