@@ -13,6 +13,20 @@
     <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
 
 
+    <association property="major" javaType="com.demo.entity.Major">
+      <id column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="major_name" property="majorName" jdbcType="VARCHAR" />
+      <result column="college_name" property="collegeName" jdbcType="VARCHAR" />
+    </association>
+
+    <collection property="teacher" ofType="com.demo.entity.Teacher">
+      <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+      <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+      <result column="teacher_pwd" property="teacherPwd" jdbcType="VARCHAR" />
+      <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="teacher_surplus" property="teacherSurplus" jdbcType="INTEGER" />
+      <result column="collage_surplus" property="collageSurplus" jdbcType="INTEGER" />
+    </collection>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.demo.entity.Student" extends="BaseResultMap" >
     <result column="student_comment" property="studentComment" jdbcType="LONGVARCHAR" />

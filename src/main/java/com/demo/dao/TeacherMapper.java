@@ -22,7 +22,7 @@ public interface TeacherMapper {
         "teacher_surplus, collage_surplus, teacher_introduction)",
         "values (#{teacherId,jdbcType=VARCHAR}, #{teacherName,jdbcType=VARCHAR}, ",
         "#{teacherPwd,jdbcType=VARCHAR}, #{majorId,jdbcType=VARCHAR}, ",
-        "#{teacherSurplus,jdbcType=INTEGER}, #{collageSurplus,jdbcType=INTEGER},, #{teacherIntroduction,jdbcType=LONGVARCHAR})"
+        "#{teacherSurplus,jdbcType=INTEGER}, #{collageSurplus,jdbcType=INTEGER}, #{teacherIntroduction,jdbcType=LONGVARCHAR})"
     })
     int insert(Teacher record);
 
@@ -75,8 +75,9 @@ public interface TeacherMapper {
     @Select({
             "select",
             "*",
-            "from teacher",
-            "where major_id = #{0}"
+            "from teacher t",
+            "where major_id = #{0}",
+            "and t.teacher_surplus > 0"
     })
     @ResultMap("BaseResultMap")
     List<Teacher> teacherInfoByMajorId(String majorId);

@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface StudentMapper {
     @Delete({
         "delete from student",
@@ -104,4 +106,31 @@ public interface StudentMapper {
     @ResultMap("BaseResultMap")
     Student findStudentByStudentId(String studentId);
 
+    @Select({
+            "select",
+            "*",
+            "from student",
+            "where student_id = '0' OR s.teacher_id is null"
+    })
+    @ResultMap("BaseResultMap")
+    List<Student> findStudentBySwap();
+
+    @Select({
+//            "SELECT m.college_name,s.student_id,s.student_name,t.* FROM (student s INNER JOIN major m ON s.major_id = m.major_id)",
+//            "INNER JOIN teacher t where t.major_id in ",
+//            "(select major_id  from major)",
+//            "WHERE m.college_name = #{0}",
+//            "andd t.teacher_surplus > 0 and (s.teacher_id = '0' OR s.teacher_id is null)"
+
+           "SELECT m.college_name,s.student_id,s.student_name,t.* FROM",
+            "(student s INNER JOIN major m ON m.major_id = s.major_id )",
+            "INNER JOIN teacher t WHERE t.major_id IN",
+            "(select major_id from major",
+            "WHERE college_name = #{0})",
+            "AND m.college_name = #{0}",
+            "and t.teacher_surplus > 0 and (s.teacher_id = '0' OR s.teacher_id is null)"
+    })
+    @ResultMap("BaseResultMap")
+    List<Student> findSwapStudentByCollegeName(String collegeName);
+//    List<Student> findSwapStudentByCollegeName(String collegeName);
 }

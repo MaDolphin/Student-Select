@@ -53,4 +53,21 @@ public interface MajorMapper {
     })
     @ResultMap("BaseResultMap")
     List<Major> findCollegeByCollegeName(String collegeName);
+
+    @Select({
+//            "select",
+//            "s.*,m.*,t.*",
+//            "from (student s INNER JOIN teacher t ON s.major_id = t.major_id)",
+//            "INNER JOIN major m on m.major_id = s.major_id",
+//            "WHERE m.college_name = #{0}",
+//            "and s.teacher_id = '0' OR s.teacher_id is null"
+
+            "SELECT",
+            "m.college_name,t.*",
+            "FROM (major m INNER JOIN teacher t ON t.major_id = m.major_id)",
+            "WHERE m.college_name = #{0}",
+            "and t.teacher_surplus > 0"
+    })
+    @ResultMap("BaseResultMap")
+    List<Major> findSwapStudentByCollegeName(String collegeName);
 }

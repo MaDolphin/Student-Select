@@ -20,4 +20,5 @@ public interface ManagerService {
     public void teacherIntoDB(List<Teacher> teacherList);
     public void majorIntoDB(List<Major> majorList);
     public List<Intention> findIntentionByCollegeName(String collegeName);
+    public List<Student> findSwapStudentByCollegeName(String collegeName);
 }

@@ -19,6 +19,7 @@ public interface StudentService {
     public Intention findIntentionByStudentId(String studentId);
     public Student findStudentByStudentId(String studentId);
     public void updateStudent(Student student);
+    public List<Student> findStudentBySwap();
 
 
 }

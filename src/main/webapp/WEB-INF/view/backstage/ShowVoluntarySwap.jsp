@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
-    <title>志愿意向信息</title>
+    <title>志愿分配信息</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
@@ -27,9 +27,9 @@
 
 <!-- END HEAD -->
 <script>
-    function select(){
+    function select() {
         alert("!!!!!!");
-        document.getElementById('teacherId').value=document.getElementById('selectTeacher').value;
+        document.getElementById('teacherId').value = document.getElementById('selectTeacher').value;
     }
 </script>
 <!-- BEGIN BODY -->
@@ -46,7 +46,7 @@
             <div class="row-fluid">
                 <div class="span12">
                     <h3 class="page-title">
-                        志愿意向信息：
+                        志愿分配信息：
                         <%--&nbsp;&nbsp;<input name="teacherId" id="teacherId" value="" type="text">--%>
                     </h3>
                     <ul class="breadcrumb">
@@ -55,7 +55,7 @@
                             <a href="">主页</a>
                             <span class="icon-angle-right"></span>
                         </li>
-                        <li><a href="#">志愿意向信息</a></li>
+                        <li><a href="#">志愿分配信息</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,88 +66,79 @@
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet-body">
 
-                        <table class="table table-striped table-bordered table-hover" id="table_collage">
+                        <table class="table table-striped table-bordered table-hover" id="table_3">
                             <thead>
                             <tr>
                                 <th style="width:8px;">
                                     <input type="checkbox" class="group-checkable"
-                                           data-set="#table_collage .checkboxes"/>
+                                           data-set="#table_3 .checkboxes"/>
                                 </th>
                                 <th class="hidden-480">准考证号</th>
                                 <th class="hidden-480">学生姓名</th>
-                                <th class="hidden-480">所报专业</th>
-                                <th class="hidden-480">第一志愿</th>
-                                <th class="hidden-480">第二志愿</th>
-                                <th class="hidden-480">第三志愿</th>
-                                <th class="hidden-480">第一志愿情况</th>
-                                <th class="hidden-480">第二志愿情况</th>
-                                <th class="hidden-480">第三志愿情况</th>
-                                <th class="hidden-480">分配志愿</th>
+                                <%--<th class="hidden-480">所报专业</th>--%>
+                                <th class="hidden-480">志愿调剂</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${intentionList}" var="intention">
-                                <%--<form action="" id="form1" target="rightFrame" method="post" class="form-horizontal">--%>
+
+                                <c:forEach items="${studentList}" var="student">
+                                    <%--<form action="" id="form1" target="rightFrame" method="post" class="form-horizontal">--%>
                                     <tr class="odd gradeX">
                                         <td><input type="checkbox" class="checkboxes" value="1"/></td>
-                                        <td class="hidden-480">${intention.studentId}</td>
-                                        <td class="hidden-480">${intention.student.studentName}</td>
-                                        <td class="hidden-480">${intention.major.majorName}</td>
-                                        <td class="hidden-480">${intention.teacher.get(0).getTeacherName()}</td>
-                                        <td class="hidden-480">${intention.teacher.get(1).getTeacherName()}</td>
-                                        <td class="hidden-480">${intention.teacher.get(2).getTeacherName()}</td>
-                                            <%--<td class="hidden-480">${intention.firstIntention}</td>--%>
-                                            <%--<td class="hidden-480">${intention.secondIntention}</td>--%>
-                                            <%--<td class="hidden-480">${intention.thirdIntention}</td>--%>
-                                        <td class="hidden-480">${intention.firstOpttype}</td>
-                                        <td class="hidden-480">${intention.secondOpttype}</td>
-                                        <td class="hidden-480">${intention.thirdOpttype}</td>
+                                        <td class="hidden-480">${student.studentId}</td>
+                                        <td class="hidden-480">${student.studentName}</td>
+                                            <%--<td class="hidden-480">${student.major.majorName}</td>--%>
                                         <td class="hidden-480">
                                             <select style="width: 130px;height: 34px" name="selectTeacher"
                                                     id="selectTeacher" class="select_field">
-                                                <option value="" style="color:#999999" selected onchange="select()">-请选择导师-</option>
-                                                <option value="${intention.teacher.get(0).getTeacherId()}" style="color:#999999">
-                                                    第一志愿
+                                                <option value="" style="color:#999999" selected onchange="select()">
+                                                    -请选择导师-
                                                 </option>
-                                                <option value="${intention.teacher.get(1).getTeacherId()}" style="color:#999999">
-                                                    第二志愿
-                                                </option>
-                                                <option value="${intention.teacher.get(2).getTeacherId()}" style="color:#999999">
-                                                    第三志愿
-                                                </option>
-                                                    <%--<c:forEach items="${intention.teacher}" var="teacherList">--%>
-                                                    <%--<c:if test="${teacherList.teacherId == intention.firstIntention}">--%>
+                                                <c:forEach items="${student.teacher}" var="teacher">
+                                                    <option value="${teacher.teacherId}" style="color:#999999">
+                                                            ${teacher.teacherName}(${teacher.majorId})
+                                                    </option>
+                                                    <%--<option value="${student.teacher.get(1).getTeacherId()}" style="color:#999999">--%>
+                                                    <%--第二志愿--%>
+                                                    <%--</option>--%>
+                                                    <%--<option value="${student.teacher.get(2).getTeacherId()}" style="color:#999999">--%>
+                                                    <%--第三志愿--%>
+                                                    <%--</option>--%>
+                                                </c:forEach>
+                                                    <%--<c:forEach items="${student.teacher}" var="teacherList">--%>
+                                                    <%--<c:if test="${teacherList.teacherId == student.firstIntention}">--%>
                                                     <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
                                                     <%--第一志愿--%>
                                                     <%--</option>--%>
                                                     <%--</c:if>--%>
-                                                    <%--<c:if test="${teacherList.teacherId == intention.secondIntention}">--%>
+                                                    <%--<c:if test="${teacherList.teacherId == student.secondIntention}">--%>
                                                     <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
                                                     <%--第二志愿--%>
                                                     <%--</option>--%>
                                                     <%--</c:if>--%>
-                                                    <%--<c:if test="${teacherList.teacherId == intention.thirdIntention}">--%>
+                                                    <%--<c:if test="${teacherList.teacherId == student.thirdIntention}">--%>
                                                     <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
                                                     <%--第三志愿--%>
                                                     <%--</option>--%>
                                                     <%--</c:if>--%>
                                                     <%--<option value="" style="color:#999999" selected>调剂${teacherList.teacherId}</option>--%>
                                                     <%--</c:forEach>--%>
-                                                <option value="0" style="color:#999999">调剂</option>
+                                                    <%--<option value="0" style="color:#999999">调剂</option>--%>
                                             </select>
                                         </td>
 
-                                        <td class="hidden-480" >
+                                        <td class="hidden-480">
 
-                                            <a href="javascript:if(confirm('确定分配该志愿吗?'))  {alert(document.getElementById('selectTeacher').value);window.location='/admin/volunteerRecognition?studentId=${intention.studentId}&collegeName=${intention.major.collegeName}&selectTeacher='+document.getElementById('selectTeacher').value;}"
+                                            <a href="javascript:if(confirm('确定调剂该志愿吗?'))  {alert(document.getElementById('selectTeacher').value);window.location='/admin/volunteerRecognition?studentId=${student.studentId}&collegeName=${student.major.collegeName}&selectTeacher='+document.getElementById('selectTeacher').value;}"
                                                class="btn mini green" target="rightFrame">
-                                                <i class="icon-ok"></i>分配志愿
+                                                <i class="icon-ok"></i>调剂志愿
                                             </a>
                                         </td>
                                     </tr>
-                                <%--</form>--%>
-                            </c:forEach>
+                                    <%--</form>--%>
+                                </c:forEach>
+
                             </tbody>
                         </table>
 

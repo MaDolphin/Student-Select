@@ -5,6 +5,27 @@
     <id column="major_id" property="majorId" jdbcType="VARCHAR" />
     <result column="major_name" property="majorName" jdbcType="VARCHAR" />
     <result column="college_name" property="collegeName" jdbcType="VARCHAR" />
+
+    <association property="student" javaType="com.demo.entity.Student">
+      <id column="student_id" property="studentId" jdbcType="VARCHAR" />
+      <result column="person_id" property="personId" jdbcType="VARCHAR" />
+      <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+      <result column="student_pwd" property="studentPwd" jdbcType="VARCHAR" />
+      <result column="student_sex" property="studentSex" jdbcType="VARCHAR" />
+      <result column="student_birthday" property="studentBirthday" jdbcType="VARCHAR" />
+      <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="student_tel" property="studentTel" jdbcType="VARCHAR" />
+      <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    </association>
+
+    <collection property="teacher" ofType="com.demo.entity.Teacher">
+      <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+      <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+      <result column="teacher_pwd" property="teacherPwd" jdbcType="VARCHAR" />
+      <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="teacher_surplus" property="teacherSurplus" jdbcType="INTEGER" />
+      <result column="collage_surplus" property="collageSurplus" jdbcType="INTEGER" />
+    </collection>
   </resultMap>
   <sql id="Base_Column_List" >
     major_id, major_name, college_name

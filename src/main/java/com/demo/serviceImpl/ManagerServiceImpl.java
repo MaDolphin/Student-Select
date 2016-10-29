@@ -341,4 +341,8 @@ public class ManagerServiceImpl implements ManagerService {
     public List<Intention> findIntentionByCollegeName(String collegeName){
         return intentionDao.findIntentionByCollegeName(collegeName);
     }
+
+    public List<Student> findSwapStudentByCollegeName(String collegeName){
+        return studentDao.findSwapStudentByCollegeName(collegeName);
+    }
 }

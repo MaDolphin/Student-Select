@@ -1,6 +1,7 @@
 package com.demo.controller;
 
 import com.demo.entity.Intention;
+import com.demo.entity.Major;
 import com.demo.entity.Student;
 import com.demo.entity.Teacher;
 import com.demo.service.ManagerService;
@@ -19,6 +20,8 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -56,7 +59,7 @@ public class AdminController {
         if(upload2.getSize() != 0){
             boolean flag2 = false;
             try{
-                if(managerService.teacherFileToDB(upload1))
+                if(managerService.teacherFileToDB(upload2))
                     flag2 = true;
                 else flag2 = false;
 
@@ -67,7 +70,7 @@ public class AdminController {
         if(upload3.getSize() != 0){
             boolean flag3 = false;
             try{
-                if(managerService.majorFileToDB(upload1))
+                if(managerService.majorFileToDB(upload3))
                     flag3 = true;
                 else flag3 = false;
 
@@ -86,14 +89,30 @@ public class AdminController {
     }
 
     @RequestMapping("/volunteerRecognition")
-    public String volunteerRecognition(String studentId, HttpSession session,String selectTeacher){
+    public String volunteerRecognition(String studentId, HttpSession session,String selectTeacher,String collegeName){
         Student student = studentService.findStudentByStudentId(studentId);
-        Teacher teacher = teacherService.queryTeacherByTeacherId(selectTeacher);
         student.setTeacherId(selectTeacher);
         studentService.updateStudent(student);
-        teacher.setCollageSurplus(teacher.getCollageSurplus()-1);
-        teacherService.updateTeacher(teacher);
-        return "redirect:/admin/volunteerRecognitionView";
+        if(!selectTeacher.equals("0") && selectTeacher != null && !selectTeacher.equals("")){
+            Teacher teacher = teacherService.queryTeacherByTeacherId(selectTeacher);
+            teacher.setCollageSurplus(teacher.getCollageSurplus()-1);
+            teacherService.updateTeacher(teacher);
+        }
+        try {
+            collegeName = URLEncoder.encode(collegeName, "UTF-8");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "redirect:/admin/volunteerRecognitionView?collegeName="+collegeName;
+    }
+
+    @RequestMapping("/voluntarySwapView")
+    public String voluntarySwapView(String collegeName, HttpSession session){
+        List<Student> studentList = managerService.findSwapStudentByCollegeName(collegeName);
+//        List<Student> swaptList = studentService.findStudentBySwap();
+//        session.setAttribute("swaptList",swaptList);
+        session.setAttribute("studentList",studentList);
+        return "/backstage/ShowVoluntarySwap";
     }
 
 }

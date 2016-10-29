@@ -21,7 +21,17 @@ public class Intention {
     
     private Student student;
 
+    private Major major;
+
     private List<Teacher> teacher;
+
+    public Major getMajor() {
+        return major;
+    }
+
+    public void setMajor(Major major) {
+        this.major = major;
+    }
 
     public List<Teacher> getTeacher() {
         return teacher;

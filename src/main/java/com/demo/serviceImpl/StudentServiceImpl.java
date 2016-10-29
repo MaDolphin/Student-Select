@@ -59,4 +59,8 @@ public class StudentServiceImpl implements StudentService{
     public void updateStudent(Student student){
         studentDao.updateByPrimaryKey(student);
     }
+
+    public List<Student> findStudentBySwap(){
+        return studentDao.findStudentBySwap();
+    }
 }

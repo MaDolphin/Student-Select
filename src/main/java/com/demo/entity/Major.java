@@ -1,11 +1,33 @@
 package com.demo.entity;
 
+import java.util.List;
+
 public class Major {
     private String majorId;
 
     private String majorName;
 
     private String collegeName;
+
+    private Student student;
+
+    private List<Teacher> teacher;
+
+    public List<Teacher> getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(List<Teacher> teacher) {
+        this.teacher = teacher;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public String getMajorId() {
         return majorId;

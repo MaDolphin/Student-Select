@@ -23,6 +23,12 @@
       <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
     </association>
 
+    <association property="major" javaType="com.demo.entity.Major">
+      <id column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="major_name" property="majorName" jdbcType="VARCHAR" />
+      <result column="college_name" property="collegeName" jdbcType="VARCHAR" />
+    </association>
+
     <collection property="teacher" ofType="com.demo.entity.Teacher">
       <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
       <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />

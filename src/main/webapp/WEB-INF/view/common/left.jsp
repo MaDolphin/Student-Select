@@ -272,6 +272,9 @@
                             <a href="/admin/volunteerRecognitionView?collegeName=${manager2.collegeName}" target="rightFrame">志愿确认</a>
                         </li>
                         <li>
+                            <a href="/admin/voluntarySwapView?collegeName=${manager2.collegeName}" target="rightFrame">志愿调剂</a>
+                        </li>
+                        <li>
                             <a href="" target="rightFrame">导出志愿信息</a>
                         </li>
                     </ul>

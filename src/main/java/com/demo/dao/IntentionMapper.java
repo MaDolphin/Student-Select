@@ -1,6 +1,7 @@
 package com.demo.dao;
 
 import com.demo.entity.Intention;
+import com.demo.entity.Major;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
@@ -98,8 +99,11 @@ public interface IntentionMapper {
             " or i.second_intention = t.teacher_id",
             " or i.third_intention = t.teacher_id",
             "WHERE m.college_name = #{0}",
-            " and s.teacher_id is null"
+            " and s.teacher_id is null",
+            " and t.teacher_surplus > 0"
     })
     @ResultMap("BaseResultMap")
     List<Intention> findIntentionByCollegeName(String collegeName);
+
+
 }
