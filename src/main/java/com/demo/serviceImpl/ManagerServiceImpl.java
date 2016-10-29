@@ -38,9 +38,19 @@ public class ManagerServiceImpl implements ManagerService {
     private MajorMapper majorDao;
     @Resource
     private IntentionMapper intentionDao;
+    @Resource
+    private SysfunctionMapper sysfunctionDao;
 
     public Manager isExist(String userName, String password, int role){
         return managerDao.isExist(userName,password,role);
+    }
+
+    public Sysfunction checkAuthority(String type){
+        return sysfunctionDao.checkAuthority(type);
+    }
+
+    public void updateSysFunction(Sysfunction sysfunction){
+        sysfunctionDao.updateSysFunction(sysfunction);
     }
 
     @Override

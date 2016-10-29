@@ -21,4 +21,6 @@ public interface ManagerService {
     public void majorIntoDB(List<Major> majorList);
     public List<Intention> findIntentionByCollegeName(String collegeName);
     public List<Student> findSwapStudentByCollegeName(String collegeName);
+    public Sysfunction checkAuthority(String type);
+    public void updateSysFunction(Sysfunction sysfunction);
 }

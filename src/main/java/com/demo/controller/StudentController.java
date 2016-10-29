@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import com.demo.dao.TeacherMapper;
 import com.demo.entity.Intention;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -9,6 +10,7 @@ import com.demo.service.StudentService;
 import com.demo.service.TeacherService;
 import com.demo.util.Md5;
 import org.apache.http.HttpResponse;
+import org.apache.ibatis.annotations.ResultMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,12 +31,14 @@ public class StudentController {
     private StudentService studentService;
     @Resource
     private TeacherService teacherService;
+    @Resource
+    private TeacherMapper teacherDao;
 
     @RequestMapping("/teacherInfo")
     public String teacherInfo(HttpSession session,String majorId) {
         List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
         session.setAttribute("teacherList",teacherList);
-        return "/backstage/AddSubstation";
+        return "/backstage/ShowTeacherInfoByMajor";
     }
 
     @RequestMapping("/editPasswordView")
@@ -43,10 +47,12 @@ public class StudentController {
     }
 
     @RequestMapping("/editPassword")
-    public String editPassword(Student student,String newPassword) {
+    @ResultMap("BaseResultMap")
+    public String editPassword(String studentId,String newPassword) {
         newPassword = Md5.Md5(newPassword);
+        Student student = studentService.findStudentByStudentId(studentId);
         student.setStudentPwd(newPassword);
-        studentService.editPassword(student);
+        studentService.updateStudent(student);
         return "redirect:/student/editSuccess";
     }
 
@@ -59,7 +65,6 @@ public class StudentController {
     public String fillTeacher (HttpSession session,String majorId,String studentId){
         List<Intention> intentionList = studentService.findIntention(studentId);
         List<Teacher> teacherList = teacherService.teacherInfoByMajorId(majorId);
-//        Teacher teacher = teacherService.teacherInfoByTeacherId(majorId);
         int flag = 0;
         session.setAttribute("teacherList",teacherList);
         if(intentionList.size()!=0){

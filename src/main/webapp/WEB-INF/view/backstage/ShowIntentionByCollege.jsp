@@ -26,12 +26,6 @@
 </head>
 
 <!-- END HEAD -->
-<script>
-    function select(){
-        alert("!!!!!!");
-        document.getElementById('teacherId').value=document.getElementById('selectTeacher').value;
-    }
-</script>
 <!-- BEGIN BODY -->
 <body style="background-color: white;line-height: 0px">
 
@@ -89,63 +83,98 @@
                             <tbody>
                             <c:forEach items="${intentionList}" var="intention">
                                 <%--<form action="" id="form1" target="rightFrame" method="post" class="form-horizontal">--%>
-                                    <tr class="odd gradeX">
-                                        <td><input type="checkbox" class="checkboxes" value="1"/></td>
-                                        <td class="hidden-480">${intention.studentId}</td>
-                                        <td class="hidden-480">${intention.student.studentName}</td>
-                                        <td class="hidden-480">${intention.major.majorName}</td>
-                                        <td class="hidden-480">${intention.teacher.get(0).getTeacherName()}</td>
-                                        <td class="hidden-480">${intention.teacher.get(1).getTeacherName()}</td>
-                                        <td class="hidden-480">${intention.teacher.get(2).getTeacherName()}</td>
-                                            <%--<td class="hidden-480">${intention.firstIntention}</td>--%>
-                                            <%--<td class="hidden-480">${intention.secondIntention}</td>--%>
-                                            <%--<td class="hidden-480">${intention.thirdIntention}</td>--%>
-                                        <td class="hidden-480">${intention.firstOpttype}</td>
-                                        <td class="hidden-480">${intention.secondOpttype}</td>
-                                        <td class="hidden-480">${intention.thirdOpttype}</td>
-                                        <td class="hidden-480">
-                                            <select style="width: 130px;height: 34px" name="selectTeacher"
-                                                    id="selectTeacher" class="select_field">
-                                                <option value="" style="color:#999999" selected onchange="select()">-请选择导师-</option>
-                                                <option value="${intention.teacher.get(0).getTeacherId()}" style="color:#999999">
-                                                    第一志愿
-                                                </option>
-                                                <option value="${intention.teacher.get(1).getTeacherId()}" style="color:#999999">
-                                                    第二志愿
-                                                </option>
-                                                <option value="${intention.teacher.get(2).getTeacherId()}" style="color:#999999">
-                                                    第三志愿
-                                                </option>
-                                                    <%--<c:forEach items="${intention.teacher}" var="teacherList">--%>
-                                                    <%--<c:if test="${teacherList.teacherId == intention.firstIntention}">--%>
-                                                    <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
-                                                    <%--第一志愿--%>
-                                                    <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<c:if test="${teacherList.teacherId == intention.secondIntention}">--%>
-                                                    <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
-                                                    <%--第二志愿--%>
-                                                    <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<c:if test="${teacherList.teacherId == intention.thirdIntention}">--%>
-                                                    <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
-                                                    <%--第三志愿--%>
-                                                    <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<option value="" style="color:#999999" selected>调剂${teacherList.teacherId}</option>--%>
-                                                    <%--</c:forEach>--%>
-                                                <option value="0" style="color:#999999">调剂</option>
-                                            </select>
-                                        </td>
+                                <tr class="odd gradeX">
+                                    <td><input type="checkbox" class="checkboxes" value="1"/></td>
+                                    <td class="hidden-480">${intention.studentId}</td>
+                                    <td class="hidden-480">${intention.student.studentName}</td>
+                                    <td class="hidden-480">${intention.major.majorName}</td>
+                                        <%--第一志愿--%>
+                                    <c:if test="${intention.firstIntention == ''}">
+                                        <td class="hidden-480">当前志愿没有填写</td>
+                                    </c:if>
+                                    <c:if test="${intention.firstIntention != null}">
+                                        <c:forEach items="${intention.teacher}" var="teacher">
+                                            <c:if test="${intention.firstIntention == teacher.teacherId}">
+                                                <td class="hidden-480">${teacher.teacherName}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if>
+                                        <%--第二志愿--%>
+                                    <c:if test="${intention.secondIntention == ''}">
+                                        <td class="hidden-480">当前志愿没有填写</td>
+                                    </c:if>
+                                    <c:if test="${intention.secondIntention != null}">
+                                        <c:forEach items="${intention.teacher}" var="teacher">
+                                            <c:if test="${intention.secondIntention == teacher.teacherId}">
+                                                <td class="hidden-480">${teacher.teacherName}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if>
+                                        <%--第三志愿--%>
+                                    <c:if test="${intention.thirdIntention == ''}">
+                                        <td class="hidden-480">当前志愿没有填写</td>
+                                    </c:if>
+                                    <c:if test="${intention.thirdIntention != null}">
+                                        <c:forEach items="${intention.teacher}" var="teacher">
+                                            <c:if test="${intention.thirdIntention == teacher.teacherId}">
+                                                <td class="hidden-480">${teacher.teacherName}</td>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if>
+                                    <td class="hidden-480">${intention.firstOpttype}</td>
+                                    <td class="hidden-480">${intention.secondOpttype}</td>
+                                    <td class="hidden-480">${intention.thirdOpttype}</td>
+                                    <td class="hidden-480">
+                                        <select style="width: 130px;height: 34px" name="selectTeacher"
+                                                id="selectTeacher" class="select_field">
+                                            <option value="" style="color:#999999" selected>
+                                                -请选择导师-
+                                            </option>
+                                                <%--第一志愿--%>
+                                            <c:if test="${intention.firstIntention != null}">
+                                                <c:forEach items="${intention.teacher}" var="teacher">
+                                                    <c:if test="${intention.firstIntention == teacher.teacherId}">
+                                                        <option value="${teacher.teacherId}"
+                                                                style="color:#999999">
+                                                            第一志愿
+                                                        </option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                                <%--第二志愿--%>
+                                            <c:if test="${intention.secondIntention != null}">
+                                                <c:forEach items="${intention.teacher}" var="teacher">
+                                                    <c:if test="${intention.secondIntention == teacher.teacherId}">
+                                                        <option value="${teacher.teacherId}"
+                                                                style="color:#999999">
+                                                            第二志愿
+                                                        </option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                                <%--第三志愿--%>
+                                            <c:if test="${intention.thirdIntention != null}">
+                                                <c:forEach items="${intention.teacher}" var="teacher">
+                                                    <c:if test="${intention.thirdIntention == teacher.teacherId}">
+                                                        <option value="${teacher.teacherId}"
+                                                                style="color:#999999">
+                                                            第三志愿
+                                                        </option>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                            <option value="0" style="color:#999999">调剂</option>
+                                        </select>
+                                    </td>
 
-                                        <td class="hidden-480" >
+                                    <td class="hidden-480">
 
-                                            <a href="javascript:if(confirm('确定分配该志愿吗?'))  {alert(document.getElementById('selectTeacher').value);window.location='/admin/volunteerRecognition?studentId=${intention.studentId}&collegeName=${intention.major.collegeName}&selectTeacher='+document.getElementById('selectTeacher').value;}"
-                                               class="btn mini green" target="rightFrame">
-                                                <i class="icon-ok"></i>分配志愿
-                                            </a>
-                                        </td>
-                                    </tr>
+                                        <a href="javascript:if(document.getElementById('selectTeacher').value == ''){alert('请选择一名导师或者调剂');}else if(confirm('确定分配该志愿吗?'))  {window.location='/admin/volunteerRecognition?studentId=${intention.studentId}&collegeName=${intention.major.collegeName}&selectTeacher='+document.getElementById('selectTeacher').value;}"
+                                           class="btn mini green" target="rightFrame">
+                                            <i class="icon-ok"></i>分配志愿
+                                        </a>
+                                    </td>
+                                </tr>
                                 <%--</form>--%>
                             </c:forEach>
                             </tbody>

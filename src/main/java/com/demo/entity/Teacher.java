@@ -15,6 +15,16 @@ public class Teacher {
 
     private String teacherIntroduction;
 
+    private Major major;
+
+    public Major getMajor() {
+        return major;
+    }
+
+    public void setMajor(Major major) {
+        this.major = major;
+    }
+
     public String getTeacherId() {
         return teacherId;
     }

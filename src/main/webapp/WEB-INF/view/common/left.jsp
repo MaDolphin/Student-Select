@@ -56,117 +56,119 @@
                 </a>
             </li>
 
-             <c:if test="${role == 'manager1'}">
-            <li class="">
-                <a href="javascript:;">
-                    <i class="icon-file-text"></i>
-                    <span class="title">导入信息</span>
-                    <span class="arrow "></span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="/admin/batchImport" target="rightFrame">导入信息</a>
-                    </li>
-                    <%--<li>--%>
-                        <%--<a href="addDevice.action" target="rightFrame">导入导师信息</a>--%>
-                    <%--</li>--%>
-                </ul>
-            </li>
+            <c:if test="${role == 'manager1'}">
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">导入信息</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/admin/batchImport" target="rightFrame">导入信息</a>
+                        </li>
+                            <%--<li>--%>
+                            <%--<a href="addDevice.action" target="rightFrame">导入导师信息</a>--%>
+                            <%--</li>--%>
+                    </ul>
+                </li>
 
-            <li class="">
-                <a href="javascript:;">
-                    <i class="icon-file-text"></i>
-                    <span class="title">导出信息</span>
-                    <span class="arrow "></span>
-                </a>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">导出信息</span>
+                        <span class="arrow "></span>
+                    </a>
 
-                <ul class="sub-menu">
-                    <li>
-                        <a href="addUnitInterval.action" target="rightFrame">导出全部导师选择信息</a>
-                    </li>
-                </ul>
-            </li>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="addUnitInterval.action" target="rightFrame">导出全部导师选择信息</a>
+                        </li>
+                    </ul>
+                </li>
 
-            <li class="">
-                <a href="javascript:;">
-                    <i class="icon-file-text"></i>
-                    <span class="title">信息维护管理</span>
-                    <span class="arrow "></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="">
-                        <a href="javascript:;">
-                            <i class="icon-file-text"></i>
-                            <span class="title">学生信息维护</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
-                            </li>
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">修改密码</a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">信息维护管理</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="">
+                            <a href="javascript:;">
+                                <i class="icon-file-text"></i>
+                                <span class="title">学生信息维护</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                                </li>
+                                <li>
+                                    <a href="addDevice.action" target="rightFrame">修改密码</a>
+                                </li>
+                            </ul>
+                        </li>
 
 
-                    <li class="">
-                        <a href="javascript:;">
-                            <i class="icon-file-text"></i>
-                            <span class="title">导师信息维护</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
-                            </li>
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">修改密码</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">
-                            <i class="icon-file-text"></i>
-                            <span class="title">学生负责人信息维护</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
-                            </li>
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">修改密码</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="javascript:;">
-                            <i class="icon-file-text"></i>
-                            <span class="title">学科专业信息维护</span>
-                            <span class="arrow "></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">查看全部信息</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="">
-                <a href="javascript:;">
-                    <i class="icon-file-text"></i>
-                    <span class="title">系统功能管理</span>
-                    <span class="arrow "></span>
-                </a>
+                        <li class="">
+                            <a href="javascript:;">
+                                <i class="icon-file-text"></i>
+                                <span class="title">导师信息维护</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                                </li>
+                                <li>
+                                    <a href="addDevice.action" target="rightFrame">修改密码</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;">
+                                <i class="icon-file-text"></i>
+                                <span class="title">学生负责人信息维护</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                                </li>
+                                <li>
+                                    <a href="addDevice.action" target="rightFrame">修改密码</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;">
+                                <i class="icon-file-text"></i>
+                                <span class="title">学科专业信息维护</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">系统功能管理</span>
+                        <span class="arrow "></span>
+                    </a>
 
-                <ul class="sub-menu">
-
-                </ul>
-            </li>
-             </c:if>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/admin/systemFunction" target="rightFrame">志愿填报功能管理</a>
+                        </li>
+                    </ul>
+                </li>
+            </c:if>
 
             <c:if test="${role == 'student'}">
                 <li class="">
@@ -190,9 +192,17 @@
                     </a>
 
                     <ul class="sub-menu">
-                        <li>
-                            <a href="/student/fillTeacher?majorId=${student.majorId}&studentId=${student.studentId}" target="rightFrame">填报志愿</a>
-                        </li>
+                        <c:if test="${sysfunction == 1}">
+                            <li>
+                                <a href="/student/fillTeacher?majorId=${student.majorId}&studentId=${student.studentId}"
+                                   target="rightFrame">填报志愿</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sysfunction != 1}">
+                            <li>
+                                <a>未开放此功能</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </li>
 
@@ -204,7 +214,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="/student/editPasswordView?studentId=${student.studentId}" target="rightFrame">修改密码</a>
+                            <a href="/student/editPasswordView?" target="rightFrame">修改密码</a>
                         </li>
                     </ul>
                 </li>
@@ -218,9 +228,17 @@
                     </a>
 
                     <ul class="sub-menu">
-                        <li>
-                            <a href="/teacher/showIntentionByTeacher?teacherId=${teacher.teacherId}" target="rightFrame">筛选预选学生</a>
-                        </li>
+                        <c:if test="${sysfunction == 1}">
+                            <li>
+                                <a href="/teacher/showIntentionByTeacher?teacherId=${teacher.teacherId}"
+                                   target="rightFrame">筛选预选学生</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sysfunction != 1}">
+                            <li>
+                                <a>未开放此功能</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </li>
 
@@ -245,18 +263,26 @@
                         <span class="arrow "></span>
                     </a>
                     <ul class="sub-menu">
-                        <li>
-                            <a href="addDevice.action" target="rightFrame">学生选择导师</a>
-                        </li>
-                        <li>
-                            <a href="addDevice.action" target="rightFrame">导师选择学生</a>
-                        </li>
-                        <li>
-                            <a href="addDevice.action" target="rightFrame">学生没有被选</a>
-                        </li>
-                        <li>
-                            <a href="addDevice.action" target="rightFrame">导师没有被选</a>
-                        </li>
+                        <c:if test="${sysfunction == 1}">
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">学生选择导师</a>
+                            </li>
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">导师选择学生</a>
+                            </li>
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">学生没有被选</a>
+                            </li>
+                            <li>
+                                <a href="addDevice.action" target="rightFrame">导师没有被选</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${sysfunction != 1}">
+                            <li>
+                                <a>未开放此功能</a>
+                            </li>
+
+                        </c:if>
                     </ul>
                 </li>
 
@@ -268,15 +294,24 @@
                     </a>
 
                     <ul class="sub-menu">
+                <c:if test="${sysfunction == 1}">
                         <li>
-                            <a href="/admin/volunteerRecognitionView?collegeName=${manager2.collegeName}" target="rightFrame">志愿确认</a>
+                            <a href="/admin/volunteerRecognitionView?collegeName=${manager2.collegeName}"
+                               target="rightFrame">志愿确认</a>
                         </li>
                         <li>
                             <a href="/admin/voluntarySwapView?collegeName=${manager2.collegeName}" target="rightFrame">志愿调剂</a>
                         </li>
                         <li>
-                            <a href="" target="rightFrame">导出志愿信息</a>
+                            <a>导出志愿信息</a>
                         </li>
+                    </c:if>
+                        <c:if test="${sysfunction != 1}">
+                            <li>
+                                <a href=""
+                                   target="rightFrame">未开放此功能</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </li>
 

@@ -85,17 +85,10 @@ public interface StudentMapper {
 
     @Update({
             "update student",
-            "set person_id = #{personId,jdbcType=VARCHAR},",
-            "student_name = #{studentName,jdbcType=VARCHAR},",
-            "student_pwd = #{studentPwd,jdbcType=VARCHAR},",
-            "student_sex = #{studentSex,jdbcType=VARCHAR},",
-            "student_birthday = #{studentBirthday,jdbcType=VARCHAR},",
-            "major_id = #{majorId,jdbcType=VARCHAR},",
-            "student_tel = #{studentTel,jdbcType=VARCHAR},",
-            "teacher_id = #{teacherId,jdbcType=VARCHAR}",
-            "where student_id = #{studentId,jdbcType=VARCHAR}"
+            "set student_pwd = #{1}",
+            "where student_id = #{0}"
     })
-    int editPassword(Student student);
+    void editPassword(String studentId,String newPassword);
 
     @Select({
             "select",

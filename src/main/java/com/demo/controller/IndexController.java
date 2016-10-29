@@ -2,6 +2,7 @@ package com.demo.controller;
 
 import com.demo.entity.Manager;
 import com.demo.entity.Student;
+import com.demo.entity.Sysfunction;
 import com.demo.entity.Teacher;
 import com.demo.service.ManagerService;
 import com.demo.service.StudentService;
@@ -34,7 +35,6 @@ public class IndexController {
 
     @RequestMapping("/main")
     public String main(String userName, String password, String identity, HttpSession session) {
-//        System.out.println("---------"+userName+"   "+password+"   "+identity+"--------");
         password = Md5.Md5(password);
         if (identity.equals("manager1")) {
             if (managerService.isExist(userName, password, 0) != null) {
@@ -46,6 +46,8 @@ public class IndexController {
         } else if (identity.equals("student")) {
             if (studentService.isExist(userName, password) != null) {
                 Student student = studentService.isExist(userName, password);
+                Sysfunction sysfunction = managerService.checkAuthority("student");
+                session.setAttribute("sysfunction",sysfunction.getStatus());
                 session.setAttribute("role", "student");
                 session.setAttribute("student", student);
                 return "/backstage/main";
@@ -53,6 +55,8 @@ public class IndexController {
         } else if (identity.equals("teacher")) {
             if (teacherService.isExist(userName, password) != null) {
                 Teacher teacher = teacherService.isExist(userName, password);
+                Sysfunction sysfunction = managerService.checkAuthority("teacher");
+                session.setAttribute("sysfunction",sysfunction.getStatus());
                 session.setAttribute("role", "teacher");
                 session.setAttribute("teacher", teacher);
                 return "/backstage/main";
@@ -60,6 +64,8 @@ public class IndexController {
         } else if (identity.equals("manager2")) {
             if (managerService.isExist(userName, password, 1) != null) {
                 Manager manager2 = managerService.isExist(userName, password,1);
+                Sysfunction sysfunction = managerService.checkAuthority("manager2");
+                session.setAttribute("sysfunction",sysfunction.getStatus());
                 session.setAttribute("role", "manager2");
                 session.setAttribute("manager2", manager2);
                 return "/backstage/main";

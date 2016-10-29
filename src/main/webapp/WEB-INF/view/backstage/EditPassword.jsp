@@ -54,7 +54,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="portlet_tab1" style="margin-left: -50px">
                                     <!-- BEGIN FORM-->
-                                    <form action="/student/editPassword?student=${student}" name="editForm" id="editForm" target="rightFrame" method="post" class="form-horizontal" >
+                                    <form action="/student/editPassword?studentId=${student.studentId}" name="editForm" id="editForm" target="rightFrame" method="post" class="form-horizontal" >
                                         <input type="hidden" value="${student.studentPwd}" id="pwd" name="pwd">
                                         <div class="row-fluid">
                                             <div class="span6 ">
@@ -141,14 +141,8 @@
     function editPassword() {
         var pwd = document.getElementById("pwd").value;
         var oldPassword = hex_md5(document.getElementById("oldPassword").value);
-
         var newPassword = document.getElementById("newPassword").value;
         var checkPassword = document.getElementById("checkPassword").value;
-        alert(oldPassword+"  "+pwd);
-//        var pwd = document.editForm.pwd.value;
-//        var oldPassword = hex_md5(document.editForm.oldPassword.value);
-//        var newPassword = document.editForm.newPassword.value;
-//        var checkPassword = document.editForm.checkPassword.value;
         if(oldPassword != pwd){
             alert("初始密码不正确，请重新输入！");
 

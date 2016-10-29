@@ -25,8 +25,8 @@ public class StudentServiceImpl implements StudentService{
         return studentDao.isExist(userName,password);
     }
 
-    public int editPassword(Student student){
-        return studentDao.editPassword(student);
+    public void editPassword(String studentId,String newPassword){
+         studentDao.editPassword(studentId,newPassword);
     }
 
     public List<Intention> findIntention(String studentId){
@@ -40,6 +40,7 @@ public class StudentServiceImpl implements StudentService{
             e.printStackTrace();
         }
     }
+
     public void updateIntention(Intention intention){
         try {
             intentionDao.updateByPrimaryKey(intention);
@@ -63,4 +64,6 @@ public class StudentServiceImpl implements StudentService{
     public List<Student> findStudentBySwap(){
         return studentDao.findStudentBySwap();
     }
+
+
 }

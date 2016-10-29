@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface StudentService {
     public Student isExist(String userName, String password);
-    public int editPassword(Student student);
+    public void editPassword(String studentId,String newPassword);
     public List<Intention> findIntention(String studentId);
     public void addIntention(Intention intention);
     public void updateIntention(Intention intention);
@@ -20,6 +20,5 @@ public interface StudentService {
     public Student findStudentByStudentId(String studentId);
     public void updateStudent(Student student);
     public List<Student> findStudentBySwap();
-
 
 }

@@ -75,11 +75,28 @@ public interface TeacherMapper {
     @Select({
             "select",
             "*",
-            "from teacher t",
-            "where major_id = #{0}",
-            "and t.teacher_surplus > 0"
+            "from teacher t inner join major m",
+            "on t.major_id = m.major_id",
+            "where t.major_id = #{0}"
+//            "and t.teacher_surplus > 0",
+//
+//            "SELECT m.college_name,s.student_id,s.student_name,t.* FROM",
+//            "(student s INNER JOIN major m ON m.major_id = s.major_id )",
+//            "INNER JOIN teacher t WHERE t.major_id IN",
+//            "(select major_id from major",
+//            "WHERE college_name = #{0})",
+//            "AND m.college_name = #{0}",
+//            "and t.teacher_surplus > 0 and (s.teacher_id = '0' OR s.teacher_id is null)"
     })
     @ResultMap("BaseResultMap")
     List<Teacher> teacherInfoByMajorId(String majorId);
+
+    @Select({
+            "select",
+            "*",
+            "from teacher"
+    })
+    @ResultMap("BaseResultMap")
+    List<Teacher> teacher();
 
 }

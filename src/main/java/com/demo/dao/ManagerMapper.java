@@ -58,4 +58,6 @@ public interface ManagerMapper {
     @ResultMap("BaseResultMap")
     Manager isExist(String userName,String password,int role);
 
+
+
 }

@@ -1,9 +1,6 @@
 package com.demo.controller;
 
-import com.demo.entity.Intention;
-import com.demo.entity.Major;
-import com.demo.entity.Student;
-import com.demo.entity.Teacher;
+import com.demo.entity.*;
 import com.demo.service.ManagerService;
 import com.demo.service.StudentService;
 import com.demo.service.TeacherService;
@@ -109,10 +106,27 @@ public class AdminController {
     @RequestMapping("/voluntarySwapView")
     public String voluntarySwapView(String collegeName, HttpSession session){
         List<Student> studentList = managerService.findSwapStudentByCollegeName(collegeName);
-//        List<Student> swaptList = studentService.findStudentBySwap();
-//        session.setAttribute("swaptList",swaptList);
         session.setAttribute("studentList",studentList);
         return "/backstage/ShowVoluntarySwap";
+    }
+
+    @RequestMapping("/systemFunction")
+    public String systemFunction(HttpSession session){
+        Sysfunction studentFunction = managerService.checkAuthority("student");
+        Sysfunction teacherFunction = managerService.checkAuthority("teacher");
+        Sysfunction manager2Function = managerService.checkAuthority("manager2");
+        session.setAttribute("studentFunction",studentFunction);
+        session.setAttribute("teacherFunction",teacherFunction);
+        session.setAttribute("manager2Function",manager2Function);
+        return "/backstage/SystenFunction";
+    }
+
+    @RequestMapping("/systemFunctionEdit")
+    public String systemFunctionEdit(int function,String type){
+        Sysfunction systemFunction = managerService.checkAuthority(type);
+        systemFunction.setStatus(function);
+        managerService.updateSysFunction(systemFunction);
+        return "redirect:/admin/systemFunction";
     }
 
 }
