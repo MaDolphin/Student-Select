@@ -95,6 +95,16 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
+    public List<Intention> findAllStudentByIntention(String collegeName) {
+        return intentionDao.findAllStudentByIntention(collegeName);
+    }
+
+    @Override
+    public List<Teacher> findAllTeacherByIntention(String collegeName) {
+        return teacherDao.findAllTeacherByIntention(collegeName);
+    }
+
+    @Override
     public boolean studentFileToDB(MultipartFile file) {
         Workbook wb = null;
         try{

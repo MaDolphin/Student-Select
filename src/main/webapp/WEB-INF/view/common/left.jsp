@@ -256,16 +256,10 @@
                     <ul class="sub-menu">
                         <c:if test="${sysfunction == 1}">
                             <li>
-                                <a href="addDevice.action" target="rightFrame">学生选择导师</a>
+                                <a href="/admin/findStudentByManager2?collegeName=${manager2.collegeName}" target="rightFrame">学生填报志愿情况</a>
                             </li>
                             <li>
-                                <a href="addDevice.action" target="rightFrame">导师选择学生</a>
-                            </li>
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">学生没有被选</a>
-                            </li>
-                            <li>
-                                <a href="addDevice.action" target="rightFrame">导师没有被选</a>
+                                <a href="/admin/findTeacherByManager2?collegeName=${manager2.collegeName}" target="rightFrame">导师互选学生情况</a>
                             </li>
                         </c:if>
                         <c:if test="${sysfunction != 1}">

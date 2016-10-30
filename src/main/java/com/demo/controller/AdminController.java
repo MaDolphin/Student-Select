@@ -261,4 +261,17 @@ public class AdminController {
         return "redirect:/admin/findAllManager2";
     }
 
+    @RequestMapping("/findStudentByManager2")
+    public String findAllStudentByIntention(String collegeName,Model model) {
+        List<Intention> intentionList = managerService.findAllStudentByIntention(collegeName);
+        model.addAttribute("intentionList",intentionList);
+        return "/backstage/ShowStudentByManager2";
+    }
+
+    @RequestMapping("/findTeacherByManager2")
+    public String findAllTeacherByIntention(String collegeName,Model model) {
+        List<Teacher> teacherList = managerService.findAllTeacherByIntention(collegeName);
+        model.addAttribute("teacherList",teacherList);
+        return "/backstage/ShowTeacherByManager2";
+    }
 }

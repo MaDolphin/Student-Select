@@ -128,4 +128,14 @@ public interface TeacherMapper {
     })
     @ResultMap("BaseResultMap")
     List<Teacher> findAllTeacher();
+
+    @Select({
+            "select",
+            "*",
+            "from teacher t",
+            "left join major m on t.major_id = m.major_id",
+            "where m.college_name = #{0}"
+    })
+    @ResultMap("BaseResultMap")
+    List<Teacher> findAllTeacherByIntention(String collegeName);
 }
