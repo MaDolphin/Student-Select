@@ -71,4 +71,12 @@ public interface MajorMapper {
     @ResultMap("BaseResultMap")
     List<Major> findSwapStudentByCollegeName(String collegeName);
 
+    @Select({
+            "select",
+            "*",
+            "from major"
+    })
+    @ResultMap("BaseResultMap")
+    List<Major> findAllMajor();
+
 }

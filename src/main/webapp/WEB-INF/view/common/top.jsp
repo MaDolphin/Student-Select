@@ -65,7 +65,7 @@
                 </li>
                 <li class="dropdown user">
                     <a href="/index/logout" target="main">
-                        <i class="icon-key"></i>登出
+                        <i class="icon-key"></i> 登出
                     </a>
                 </li>
                 <!-- END USER LOGIN DROPDOWN -->

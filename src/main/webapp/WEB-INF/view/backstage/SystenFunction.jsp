@@ -82,7 +82,7 @@
                                             </td>
                                             <td class="hidden-480">
                                                 <a href="javascript:if(confirm('确认关闭该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=0&type=student'" class="btn mini red" target="rightFrame">
-                                                    <i class="icon-remove"></i>关闭
+                                                    <i class="icon-remove"></i> 关闭
                                                 </a>
                                             </td>
                                         </c:if>
@@ -113,7 +113,7 @@
                                         </td>
                                         <td class="hidden-480">
                                             <a href="javascript:if(confirm('确认关闭该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=0&type=teacher'" class="btn mini red" target="rightFrame">
-                                                <i class="icon-remove"></i>关闭
+                                                <i class="icon-remove"></i> 关闭
                                             </a>
                                         </td>
                                     </c:if>
@@ -144,7 +144,7 @@
                                         </td>
                                         <td class="hidden-480">
                                             <a href="javascript:if(confirm('确认关闭该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=0&type=manager2'" class="btn mini red" target="rightFrame">
-                                                <i class="icon-remove"></i>关闭
+                                                <i class="icon-remove"></i> 关闭
                                             </a>
                                         </td>
                                     </c:if>

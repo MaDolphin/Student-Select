@@ -58,4 +58,13 @@ public interface ManagerMapper {
     @ResultMap("BaseResultMap")
     Manager isExist(String userName,String password,int role);
 
+    @Select({
+            "select",
+            "*",
+            "from manager m",
+            "where m.manager_role = 1"
+    })
+    @ResultMap("BaseResultMap")
+    List<Manager> findAllManager2();
+
 }

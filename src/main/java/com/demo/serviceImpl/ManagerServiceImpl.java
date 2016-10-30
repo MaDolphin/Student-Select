@@ -54,6 +54,47 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
+    public List<Student> findAllStudent() {
+        return studentDao.findAllStudent();
+    }
+
+    @Override
+    public List<Teacher> findAllTeacher() {
+        return teacherDao.findAllTeacher();
+    }
+
+    @Override
+    public List<Manager> findAllManger2() {
+        return managerDao.findAllManager2();
+    }
+
+    @Override
+    public List<Major> findAllMajor() {
+        return majorDao.findAllMajor();
+    }
+
+    @Override
+    public void resetStudentPassword(String studentId) {
+        Student student = studentDao.findStudentByStudentId(studentId);
+        student.setStudentPwd(Md5.Md5(student.getPersonId().substring(12,18)));
+        studentDao.updateByPrimaryKey(student);
+    }
+
+    @Override
+    public void resetTeacherPassword(String teacherId) {
+        Teacher teacher = teacherDao.selectByPrimaryKey(teacherId);
+        teacher.setTeacherPwd(Md5.Md5("888888"));
+        teacherDao.updateByPrimaryKey(teacher);
+    }
+
+    @Override
+    public void resetManager2Password(String managerName) {
+        Manager manager = managerDao.selectByPrimaryKey(managerName);
+        manager.setManagerPwd(Md5.Md5("1234"));
+        managerDao.updateByPrimaryKey(manager);
+    }
+
+    @Override
     public boolean studentFileToDB(MultipartFile file) {
         Workbook wb = null;
         try{

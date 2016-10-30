@@ -23,4 +23,11 @@ public interface ManagerService {
     public List<Student> findSwapStudentByCollegeName(String collegeName);
     public Sysfunction checkAuthority(String type);
     public void updateSysFunction(Sysfunction sysfunction);
+    public List<Student> findAllStudent();
+    public List<Teacher> findAllTeacher();
+    public List<Manager> findAllManger2();
+    public List<Major> findAllMajor();
+    public void resetStudentPassword(String studentId);
+    public void resetTeacherPassword(String teacherId);
+    public void resetManager2Password(String managerName);
 }

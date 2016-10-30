@@ -133,14 +133,17 @@
     <column id="50" parent="14" name="teacher_surplus">
       <data-type>int(11)|0</data-type>
     </column>
-    <key id="51" parent="14" name="PRIMARY">
+    <column id="51" parent="14" name="collage_surplus">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="52" parent="14" name="PRIMARY">
       <columns>teacher_id</columns>
       <primary>1</primary>
     </key>
-    <column id="52" parent="15" name="type">
+    <column id="53" parent="15" name="type">
       <data-type>varchar(18)|0</data-type>
     </column>
-    <column id="53" parent="15" name="status">
+    <column id="54" parent="15" name="status">
       <data-type>int(11)|0</data-type>
     </column>
   </database-model>

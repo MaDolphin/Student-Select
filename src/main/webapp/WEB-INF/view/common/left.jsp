@@ -102,10 +102,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
-                                </li>
-                                <li>
-                                    <a href="addDevice.action" target="rightFrame">修改密码</a>
+                                    <a href="/admin/findAllStudent" target="rightFrame">查看全部信息</a>
                                 </li>
                             </ul>
                         </li>
@@ -119,10 +116,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
-                                </li>
-                                <li>
-                                    <a href="addDevice.action" target="rightFrame">修改密码</a>
+                                    <a href="/admin/findAllTeacher" target="rightFrame">查看全部信息</a>
                                 </li>
                             </ul>
                         </li>
@@ -134,10 +128,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
-                                </li>
-                                <li>
-                                    <a href="addDevice.action" target="rightFrame">修改密码</a>
+                                    <a href="/admin/findAllManager2" target="rightFrame">查看全部信息</a>
                                 </li>
                             </ul>
                         </li>
@@ -149,7 +140,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="addDevice.action" target="rightFrame">查看全部信息</a>
+                                    <a href="/admin/findAllMajor" target="rightFrame">查看全部信息</a>
                                 </li>
                             </ul>
                         </li>

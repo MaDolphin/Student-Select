@@ -197,4 +197,50 @@ public class AdminController {
         return "/backstage/main";
     }
 
+    @RequestMapping("/findAllStudent")
+    public String findAllStudent(Model model) {
+        List<Student> studentList = managerService.findAllStudent();
+        model.addAttribute("studentList",studentList);
+        return "/backstage/ShowAllStudentByManager";
+    }
+
+    @RequestMapping("/findAllTeacher")
+    public String findAllTeacher(Model model) {
+        List<Teacher> teacherList = managerService.findAllTeacher();
+        model.addAttribute("teacherList",teacherList);
+        return "/backstage/ShowAllTeacherByManager";
+    }
+
+    @RequestMapping("/findAllManager2")
+    public String findAllManager2(Model model) {
+        List<Manager> managerList = managerService.findAllManger2();
+        model.addAttribute("managerList",managerList);
+        return "/backstage/ShowAllManager2ByManager";
+    }
+
+    @RequestMapping("/findAllMajor")
+    public String findAllMajor(Model model) {
+        List<Major> majorList = managerService.findAllMajor();
+        model.addAttribute("majorList",majorList);
+        return "/backstage/ShowAllMajorByManager";
+    }
+
+    @RequestMapping("/resetStudentPassword")
+    public String resetStudentPassword(String studentId,Model model) {
+        managerService.resetStudentPassword(studentId);
+        return "redirect:/admin/findAllStudent";
+    }
+
+    @RequestMapping("/resetTeacherPassword")
+    public String resetTeacherPassword(String teacherId,Model model) {
+        managerService.resetTeacherPassword(teacherId);
+        return "redirect:/admin/findAllTeacher";
+    }
+
+    @RequestMapping("/resetManager2Password")
+    public String resetManager2Password(String managerName,Model model) {
+        managerService.resetManager2Password(managerName);
+        return "redirect:/admin/findAllManager2";
+    }
+
 }

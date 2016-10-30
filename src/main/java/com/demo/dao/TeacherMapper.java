@@ -11,28 +11,28 @@ import java.util.List;
 
 public interface TeacherMapper {
     @Delete({
-            "delete from teacher",
-            "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
+        "delete from teacher",
+        "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
     })
     int deleteByPrimaryKey(String teacherId);
 
     @Insert({
-            "insert into teacher (teacher_id, teacher_name, ",
-            "teacher_pwd, major_id, ",
-            "teacher_surplus, collage_surplus, teacher_introduction)",
-            "values (#{teacherId,jdbcType=VARCHAR}, #{teacherName,jdbcType=VARCHAR}, ",
-            "#{teacherPwd,jdbcType=VARCHAR}, #{majorId,jdbcType=VARCHAR}, ",
-            "#{teacherSurplus,jdbcType=INTEGER}, #{collageSurplus,jdbcType=INTEGER}, #{teacherIntroduction,jdbcType=LONGVARCHAR})"
+        "insert into teacher (teacher_id, teacher_name, ",
+        "teacher_pwd, major_id, ",
+        "teacher_surplus, collage_surplus, teacher_introduction)",
+        "values (#{teacherId,jdbcType=VARCHAR}, #{teacherName,jdbcType=VARCHAR}, ",
+        "#{teacherPwd,jdbcType=VARCHAR}, #{majorId,jdbcType=VARCHAR}, ",
+        "#{teacherSurplus,jdbcType=INTEGER}, #{collageSurplus,jdbcType=INTEGER}, #{teacherIntroduction,jdbcType=LONGVARCHAR})"
     })
     int insert(Teacher record);
 
     int insertSelective(Teacher record);
 
     @Select({
-            "select",
-            "teacher_id, teacher_name, teacher_pwd, major_id, teacher_surplus, collage_surplus, teacher_introduction",
-            "from teacher",
-            "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
+        "select",
+        "teacher_id, teacher_name, teacher_pwd, major_id, teacher_surplus, collage_surplus, teacher_introduction",
+        "from teacher",
+        "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
     })
     @ResultMap("ResultMapWithBLOBs")
     Teacher selectByPrimaryKey(String teacherId);
@@ -40,25 +40,25 @@ public interface TeacherMapper {
     int updateByPrimaryKeySelective(Teacher record);
 
     @Update({
-            "update teacher",
-            "set teacher_name = #{teacherName,jdbcType=VARCHAR},",
-            "teacher_pwd = #{teacherPwd,jdbcType=VARCHAR},",
-            "major_id = #{majorId,jdbcType=VARCHAR},",
-            "collage_surplus = #{collageSurplus,jdbcType=INTEGER},",
-            "teacher_surplus = #{teacherSurplus,jdbcType=INTEGER},",
-            "teacher_introduction = #{teacherIntroduction,jdbcType=LONGVARCHAR}",
-            "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
+        "update teacher",
+        "set teacher_name = #{teacherName,jdbcType=VARCHAR},",
+          "teacher_pwd = #{teacherPwd,jdbcType=VARCHAR},",
+          "major_id = #{majorId,jdbcType=VARCHAR},",
+          "collage_surplus = #{collageSurplus,jdbcType=INTEGER},",
+          "teacher_surplus = #{teacherSurplus,jdbcType=INTEGER},",
+          "teacher_introduction = #{teacherIntroduction,jdbcType=LONGVARCHAR}",
+        "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKeyWithBLOBs(Teacher record);
 
     @Update({
-            "update teacher",
-            "set teacher_name = #{teacherName,jdbcType=VARCHAR},",
-            "teacher_pwd = #{teacherPwd,jdbcType=VARCHAR},",
-            "major_id = #{majorId,jdbcType=VARCHAR},",
-            "collage_surplus = #{collageSurplus,jdbcType=INTEGER},",
-            "teacher_surplus = #{teacherSurplus,jdbcType=INTEGER}",
-            "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
+        "update teacher",
+        "set teacher_name = #{teacherName,jdbcType=VARCHAR},",
+          "teacher_pwd = #{teacherPwd,jdbcType=VARCHAR},",
+          "major_id = #{majorId,jdbcType=VARCHAR},",
+          "collage_surplus = #{collageSurplus,jdbcType=INTEGER},",
+          "teacher_surplus = #{teacherSurplus,jdbcType=INTEGER}",
+        "where teacher_id = #{teacherId,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(Teacher record);
 
@@ -70,7 +70,7 @@ public interface TeacherMapper {
             "and teacher_pwd = #{1}"
     })
     @ResultMap("BaseResultMap")
-    Teacher isExist(String userName, String password);
+    Teacher isExist(String userName,String password);
 
     @Select({
             "select",
@@ -119,4 +119,13 @@ public interface TeacherMapper {
     })
     @ResultMap("BaseResultMap")
     List<Teacher> exportVoluntaryInfo();
+
+    @Select({
+            "select",
+            "*",
+            "from teacher t",
+            "inner join major m on t.major_id = m.major_id"
+    })
+    @ResultMap("BaseResultMap")
+    List<Teacher> findAllTeacher();
 }

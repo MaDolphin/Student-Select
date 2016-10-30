@@ -126,4 +126,13 @@ public interface StudentMapper {
     @ResultMap("BaseResultMap")
     List<Student> findSwapStudentByCollegeName(String collegeName);
 //    List<Student> findSwapStudentByCollegeName(String collegeName);
+
+    @Select({
+            "select",
+            "*",
+            "from student s",
+            "inner join major m on s.major_id = m.major_id"
+    })
+    @ResultMap("BaseResultMap")
+    List<Student> findAllStudent();
 }
