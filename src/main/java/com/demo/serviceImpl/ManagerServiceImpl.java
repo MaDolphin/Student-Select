@@ -319,7 +319,7 @@ public class ManagerServiceImpl implements ManagerService {
                             //case 0 : user.setId(Integer.valueOf(cellValue));break;
                             case 0:manager.setManagerName(cellValue);break;
                             case 1:manager.setCollegeName(cellValue);
-                                   manager.setManagerPwd(Md5.Md5(cellValue));
+                                   manager.setManagerPwd(Md5.Md5("1234"));
                                    manager.setManagerRole(1);break;
                         }
                     }
