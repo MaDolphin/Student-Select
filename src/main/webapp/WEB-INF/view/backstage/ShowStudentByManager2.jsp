@@ -82,7 +82,7 @@
                                         <td class="hidden-480">${intention.student.studentSex}</td>
                                         <td class="hidden-480">${intention.student.studentBirthday}</td>
                                         <td class="hidden-480">${intention.student.studentTel}</td>
-                                        <td class="hidden-480">${intention.student.major.majorName}</td>
+                                        <td class="hidden-480">${intention.major.majorName}</td>
                                         <c:if test="${intention.id != null}">
                                             <td class="hidden-480">
                                                 <span class="label label-success">已填报</span>

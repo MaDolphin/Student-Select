@@ -106,8 +106,8 @@ public interface IntentionMapper {
     List<Intention> findIntentionByCollegeName(String collegeName);
 
     @Select({
-            "select * from intention i",
-            "RIGHT JOIN student s ON i.student_id = s.student_id",
+            "select * from student s",
+            "LEFT JOIN intention i ON i.student_id = s.student_id",
             "INNER JOIN major m on m.major_id = s.major_id",
             "WHERE m.college_name = #{0}"
     })
