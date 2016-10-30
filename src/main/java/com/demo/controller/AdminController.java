@@ -145,7 +145,7 @@ public class AdminController {
             teacherList = teacherService.exportVoluntaryInfo();
         }
 
-        // excel header for base info
+        // 表头信息
         List<String> excelHeaderForBaseInfo = new ArrayList<String>();
         excelHeaderForBaseInfo.add("导师编号");
         excelHeaderForBaseInfo.add("导师姓名");
@@ -154,8 +154,8 @@ public class AdminController {
         excelHeaderForBaseInfo.add("学生编号");
         excelHeaderForBaseInfo.add("学生名称");
         excelHeaderForBaseInfo.add("所属学院");
-        //导出到excel
 
+        //导出内容到excel
         for (int i=0;i<teacherList.size();i++) {
             for(int j=0;j<teacherList.get(i).getStudent().size();j++){
                 List<String> rowList = new ArrayList<String>();
