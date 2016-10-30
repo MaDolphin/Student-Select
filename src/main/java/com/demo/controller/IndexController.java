@@ -33,6 +33,16 @@ public class IndexController {
         return "/backstage/Login";
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("role");
+        session.removeAttribute("manager1");
+        session.removeAttribute("manager2");
+        session.removeAttribute("teacher");
+        session.removeAttribute("student");
+        return "redirect:/index/login";
+    }
+
     @RequestMapping("/main")
     public String main(String userName, String password, String identity, HttpSession session) {
         password = Md5.Md5(password);

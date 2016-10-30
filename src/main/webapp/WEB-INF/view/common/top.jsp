@@ -49,9 +49,23 @@
                 <li class="dropdown user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img alt="" src="/images/backstage/avatar1_small.jpg"/>
-                        <c:if test="${userName != null}">
-                            <span class="username">你好，${userName}!</span>
+                        <c:if test="${manager1 != null}">
+                            <span class="username">你好，${manager1.managerName} 管理员!</span>
                         </c:if>
+                        <c:if test="${manager2 != null}">
+                            <span class="username">你好，${manager2.managerName} 管理员!</span>
+                        </c:if>
+                        <c:if test="${teacher != null}">
+                            <span class="username">你好，${teacher.teacherName} 老师!</span>
+                        </c:if>
+                        <c:if test="${student != null}">
+                            <span class="username">你好，${student.studentName} 同学!</span>
+                        </c:if>
+                    </a>
+                </li>
+                <li class="dropdown user">
+                    <a href="/index/logout" target="main">
+                        <i class="icon-key"></i>登出
                     </a>
                 </li>
                 <!-- END USER LOGIN DROPDOWN -->

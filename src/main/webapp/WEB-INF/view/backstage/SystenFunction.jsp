@@ -90,10 +90,10 @@
                                     <c:if test="${studentFunction.status == 0}">
 
                                         <td class="hidden-480">
-                                            <span class="label label-success">当前状态关闭</span>
+                                            <span class="label label-warning">当前状态关闭</span>
                                         </td>
                                         <td class="hidden-480">
-                                            <a href="javascript:if(confirm('确认开启该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=1&type=student'" class="btn mini red" target="rightFrame">
+                                            <a href="javascript:if(confirm('确认开启该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=1&type=student'" class="btn mini green" target="rightFrame">
                                                 <i class="icon-ok"></i>开启
                                             </a>
                                         </td>
@@ -121,10 +121,10 @@
                                     <c:if test="${teacherFunction.status == 0}">
 
                                         <td class="hidden-480">
-                                            <span class="label label-success">当前状态关闭</span>
+                                            <span class="label label-warning">当前状态关闭</span>
                                         </td>
                                         <td class="hidden-480">
-                                            <a href="javascript:if(confirm('确认开启该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=1&type=teacher'" class="btn mini red" target="rightFrame">
+                                            <a href="javascript:if(confirm('确认开启该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=1&type=teacher'" class="btn mini green" target="rightFrame">
                                                 <i class="icon-ok"></i>开启
                                             </a>
                                         </td>
@@ -152,10 +152,10 @@
                                     <c:if test="${manager2Function.status == 0}">
 
                                         <td class="hidden-480">
-                                            <span class="label label-success">当前状态关闭</span>
+                                            <span class="label label-warning">当前状态关闭</span>
                                         </td>
                                         <td class="hidden-480">
-                                            <a href="javascript:if(confirm('确认开启该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=1&type=manager2'" class="btn mini red" target="rightFrame">
+                                            <a href="javascript:if(confirm('确认开启该系统功能吗?'))window.location='/admin/systemFunctionEdit?function=1&type=manager2'" class="btn mini green target="rightFrame">
                                                 <i class="icon-ok"></i>开启
                                             </a>
                                         </td>
