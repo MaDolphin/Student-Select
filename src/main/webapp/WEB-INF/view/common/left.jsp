@@ -82,7 +82,7 @@
 
                     <ul class="sub-menu">
                         <li>
-                            <a href="addUnitInterval.action" target="rightFrame">导出全部导师选择信息</a>
+                            <a href="/admin/exportVoluntaryInfo?optype=manager1" target="rightFrame">导出全部导师选择信息</a>
                         </li>
                     </ul>
                 </li>
@@ -303,7 +303,7 @@
                             <a href="/admin/voluntarySwapView?collegeName=${manager2.collegeName}" target="rightFrame">志愿调剂</a>
                         </li>
                         <li>
-                            <a href="/admin/exportVoluntaryInfo?collegeName=${manager2.collegeName}" target="rightFrame">导出志愿信息</a>
+                            <a href="/admin/exportVoluntaryInfo?collegeName=${manager2.collegeName}&optype=manager2" target="rightFrame">导出志愿信息</a>
                         </li>
                     </c:if>
                         <c:if test="${sysfunction != 1}">

@@ -135,10 +135,16 @@ public class AdminController {
     }
 
     @RequestMapping("/exportVoluntaryInfo")
-    public String exportVoluntaryInfo(String collegeName, HttpServletResponse response) {
+    public String exportVoluntaryInfo(String collegeName, HttpServletResponse response, String optype) {
         // dataset
         List<List<String>> dataset = new ArrayList<List<String>>();
-        List<Teacher> teacherList = teacherService.exportVoluntaryInfoByCollegeName(collegeName);
+        List<Teacher> teacherList = null;
+        if(optype.equals("manager2")){
+            teacherList = teacherService.exportVoluntaryInfoByCollegeName(collegeName);
+        }else if(optype.equals("manager1")){
+            teacherList = teacherService.exportVoluntaryInfo();
+        }
+
         // excel header for base info
         List<String> excelHeaderForBaseInfo = new ArrayList<String>();
         excelHeaderForBaseInfo.add("导师编号");
@@ -180,7 +186,7 @@ public class AdminController {
 
         try {
             ServletOutputStream out = response.getOutputStream();
-            exportUtil.exportExcelForHealthInfo("志愿信息表",excelHeaderForBaseInfo,dataset,out,teacherList);
+            exportUtil.exportExcelForHealthInfo("志愿信息表",excelHeaderForBaseInfo,dataset,out);
             out.close();
             //System.out.println("excel export success");
         } catch (FileNotFoundException e) {

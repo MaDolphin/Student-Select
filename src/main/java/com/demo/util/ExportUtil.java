@@ -34,7 +34,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ExportUtil {
 
-    public void exportExcelForHealthInfo(String title, List<String> headersList, List<List<String>> dataset, OutputStream out, List<Teacher> teacherList) {
+    public void exportExcelForHealthInfo(String title, List<String> headersList, List<List<String>> dataset, OutputStream out) {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet(title);
         sheet.setDefaultColumnWidth((short) 20);

@@ -105,4 +105,8 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Teacher> exportVoluntaryInfoByCollegeName(String collegeName){
         return teacherDao.exportVoluntaryInfoByCollegeName(collegeName);
     }
+
+    public List<Teacher> exportVoluntaryInfo(){
+        return teacherDao.exportVoluntaryInfo();
+    }
 }
