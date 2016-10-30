@@ -396,4 +396,8 @@ public class ManagerServiceImpl implements ManagerService {
     public List<Student> findSwapStudentByCollegeName(String collegeName){
         return studentDao.findSwapStudentByCollegeName(collegeName);
     }
+
+    public Major selectByPrimaryKey(String majorId){
+        return majorDao.selectByPrimaryKey(majorId);
+    }
 }

@@ -197,6 +197,13 @@ public class AdminController {
         return "/backstage/main";
     }
 
+    @RequestMapping("/editMajorInfo")
+    public String editMajorInfo(String majorId,HttpSession session) {
+        Major major = managerService.selectByPrimaryKey(majorId);
+        session.setAttribute("major",major);
+        return "/backstage/EditMajorInfo";
+    }
+
     @RequestMapping("/findAllStudent")
     public String findAllStudent(Model model) {
         List<Student> studentList = managerService.findAllStudent();
