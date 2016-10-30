@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label">教师：</label>
+                                <label class="control-label">导师：</label>
                                 <div class="controls">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
                                         <div class="input-append">
@@ -120,6 +120,25 @@
 													<span class="fileupload-new">上传</span>
 													<span class="fileupload-exists">修改</span>
 													<input type="file" style="height:20px" id="upload3" name="upload3" />
+													</span>
+                                            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">学科负责人：</label>
+                                <div class="controls">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-append">
+                                            <div class="uneditable-input">
+                                                <i class="icon-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <span class="btn btn-file">
+													<span class="fileupload-new">上传</span>
+													<span class="fileupload-exists">修改</span>
+													<input type="file" style="height:20px" id="upload4" name="upload4" />
 													</span>
                                             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
                                         </div>
@@ -202,10 +221,12 @@ function LimitAttach() {
         var file1=document.getElementById("upload1").value;
         var file2=document.getElementById("upload2").value;
         var file3=document.getElementById("upload3").value;
+        var file4=document.getElementById("upload4").value;
 
         var flag1 = false;
         var flag2 = false;
         var flag3 = false;
+        var flag4 = false;
 
         if(file1 != ""){
             var ext = file1.slice(file1.lastIndexOf(".")+1).toLowerCase();
@@ -243,8 +264,20 @@ function LimitAttach() {
             flag3 = true;
         }
 
-        if(file1 !="" || file2 !="" || file3 !=""){
-            if(flag1 == true && flag2 == true && flag3 == true){
+        if(file4 != ""){
+            var ext = file4.slice(file4.lastIndexOf(".")+1).toLowerCase();
+            if ("xls" == ext || "xlsx" == ext) {
+                flag4 = true;
+            }else {
+                alert("只能上传Excel文件");
+                return false;
+            }
+        }else {
+            flag4 = true;
+        }
+
+        if(file1 !="" || file2 !="" || file3 !="" || file4 !=""){
+            if(flag1 == true && flag2 == true && flag3 == true && flag4 == true){
                 return true;
             }
         }else {

@@ -279,6 +279,64 @@ public class ManagerServiceImpl implements ManagerService {
         }
     }
 
+    @Override
+    public boolean managerFileToDB(MultipartFile file) {
+        Workbook wb = null;
+        try {
+            InputStream fi = file.getInputStream();
+            String fileName = file.getOriginalFilename();
+            System.out.println(fileName);
+            if (fileName.toLowerCase().endsWith(".xls")) {
+                wb = new HSSFWorkbook(fi);
+            } else if (fileName.toLowerCase().endsWith(".xlsx")) {
+                wb = new XSSFWorkbook(fi);
+            }
+            if (checkExcelSheet(wb, "学科负责人")) {
+
+                // add major
+                Sheet sheet = wb.getSheetAt(0);
+                int rowNum = sheet.getLastRowNum() + 1;
+                List managerList = new ArrayList<Manager>();
+                //i 从1开始表示第一行为标题 不包含在数据中
+                for (int i = 1; i < rowNum; i++) {
+                    Manager manager = new Manager();
+                    Row row = sheet.getRow(i);
+                    int cellNum = row.getLastCellNum();
+                    for (int j = 0; j < cellNum; j++) {
+                        Cell cell = row.getCell(j);
+                        String cellValue = null;
+                        switch(cell.getCellType()){ //判断excel单元格内容的格式，并对其进行转换，以便插入数据库
+                            case 0 : cellValue = String.valueOf((int)cell.getNumericCellValue()); break;
+                            case 1 : cellValue = cell.getStringCellValue(); break;
+                            case 2 : cellValue = String.valueOf(cell.getDateCellValue()); break;
+                            case 3 : cellValue = ""; break;
+                            case 4 : cellValue = String.valueOf(cell.getBooleanCellValue()); break;
+                            case 5 : cellValue = String.valueOf(cell.getErrorCellValue()); break;
+                        }
+
+                        switch (j) {//通过列数来判断对应插如的字段
+                            //数据中不应该保护ID这样的主键记录
+                            //case 0 : user.setId(Integer.valueOf(cellValue));break;
+                            case 0:manager.setManagerName(cellValue);break;
+                            case 1:manager.setCollegeName(cellValue);
+                                   manager.setManagerPwd(Md5.Md5(cellValue));
+                                   manager.setManagerRole(1);break;
+                        }
+                    }
+                    managerList.add(manager);
+                }
+                managerIntoDB(managerList);
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     @Override
     public boolean checkExcelSheet(Workbook wb,String sheetName) {
@@ -360,6 +418,21 @@ public class ManagerServiceImpl implements ManagerService {
                 return false;
             }
         }
+        if(sheetName.equals("学科负责人")) {
+            if(colNumTitle == 2){
+                if( rowTitle.getCell(0).getStringCellValue().equals("姓名") == false){
+                    return false;
+                }
+                if( rowTitle.getCell(1).getStringCellValue().equals("所属学院") == false){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }else {
+                return false;
+            }
+        }
         else {
             return false;
         }
@@ -386,6 +459,14 @@ public class ManagerServiceImpl implements ManagerService {
         int num = majorList.size();
         for(int i=0; i<num; i++){
             majorDao.insert(majorList.get(i));
+        }
+    }
+
+    @Override
+    public void managerIntoDB(List<Manager> managerList) {
+        int num = managerList.size();
+        for(int i=0; i<num; i++){
+            managerDao.insert(managerList.get(i));
         }
     }
 

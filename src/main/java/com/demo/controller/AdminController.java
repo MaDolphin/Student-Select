@@ -47,7 +47,7 @@ public class AdminController {
     }
 
     @RequestMapping("/batchImportMethod")
-    public String batchImportMethod(MultipartFile upload1, MultipartFile upload2, MultipartFile upload3, Model model) {
+    public String batchImportMethod(MultipartFile upload1, MultipartFile upload2, MultipartFile upload3, MultipartFile upload4,Model model) {
         if (upload1.getSize() != 0) {
             boolean flag1 = false;
             try {
@@ -75,6 +75,17 @@ public class AdminController {
                 if (managerService.majorFileToDB(upload3))
                     flag3 = true;
                 else flag3 = false;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (upload4.getSize() != 0) {
+            boolean flag4 = false;
+            try {
+                if (managerService.managerFileToDB(upload4))
+                    flag4 = true;
+                else flag4 = false;
 
             } catch (Exception e) {
                 e.printStackTrace();

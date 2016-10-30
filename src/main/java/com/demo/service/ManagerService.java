@@ -15,10 +15,12 @@ public interface ManagerService {
     public boolean studentFileToDB(MultipartFile file);
     public boolean teacherFileToDB(MultipartFile file);
     public boolean majorFileToDB(MultipartFile file);
+    public boolean managerFileToDB(MultipartFile file);
     public boolean checkExcelSheet(Workbook wb,String sheetName);
     public void studentIntoDB(List<Student> studentList);
     public void teacherIntoDB(List<Teacher> teacherList);
     public void majorIntoDB(List<Major> majorList);
+    public void managerIntoDB(List<Manager> managerList);
     public List<Intention> findIntentionByCollegeName(String collegeName);
     public List<Student> findSwapStudentByCollegeName(String collegeName);
     public Sysfunction checkAuthority(String type);
