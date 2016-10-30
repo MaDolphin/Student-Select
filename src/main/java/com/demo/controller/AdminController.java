@@ -116,7 +116,7 @@ public class AdminController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/volunteerRecognitionView?collegeName=" + collegeName;
+        return "redirect:/admin/voluntarySwapView?collegeName=" + collegeName;
     }
 
     @RequestMapping("/voluntarySwapView")
@@ -213,6 +213,16 @@ public class AdminController {
         Major major = managerService.selectByPrimaryKey(majorId);
         session.setAttribute("major",major);
         return "/backstage/EditMajorInfo";
+    }
+
+    @RequestMapping("/editMajor")
+    public String editMajorInfo(String majorId,String majorName,String collegeName,HttpSession session) {
+        Major major = new Major();
+        major.setMajorId(majorId);
+        major.setMajorName(majorName);
+        major.setCollegeName(collegeName);
+        managerService.updateMajor(major);
+        return "redirect:/admin/editMajorInfo?majorId="+majorId;
     }
 
     @RequestMapping("/findAllStudent")

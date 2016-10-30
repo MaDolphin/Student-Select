@@ -95,6 +95,21 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
+    public void updateMajor(Major major) {
+        majorDao.updateByPrimaryKey(major);
+    }
+
+    @Override
+    public Manager findManagerByManagerId(String managerId) {
+        return managerDao.selectByPrimaryKey(managerId);
+    }
+
+    @Override
+    public void updateManager(Manager manager) {
+        managerDao.updateByPrimaryKey(manager);
+    }
+
+    @Override
     public List<Student> findAllStudentByIntention(String collegeName) {
         return studentDao.findAllStudentByIntention(collegeName);
     }

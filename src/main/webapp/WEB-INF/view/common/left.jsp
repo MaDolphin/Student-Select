@@ -159,6 +159,18 @@
                         </li>
                     </ul>
                 </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file-text"></i>
+                        <span class="title">个人信息维护</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/student/editPasswordView" target="rightFrame">修改密码</a>
+                        </li>
+                    </ul>
+                </li>
             </c:if>
 
             <c:if test="${role == 'student'}">
@@ -205,7 +217,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="/student/editPasswordView?" target="rightFrame">修改密码</a>
+                            <a href="/student/editPasswordView" target="rightFrame">修改密码</a>
                         </li>
                     </ul>
                 </li>
@@ -241,7 +253,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="addDevice.action" target="rightFrame">修改密码</a>
+                            <a href="/student/editPasswordView" target="rightFrame">修改密码</a>
                         </li>
                     </ul>
                 </li>
@@ -308,7 +320,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="addDevice.action" target="rightFrame">修改密码</a>
+                            <a href="/student/editPasswordView" target="rightFrame">修改密码</a>
                         </li>
                     </ul>
                 </li>

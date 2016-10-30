@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/css/backstage/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/css/backstage/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
@@ -14,7 +14,7 @@
     <link href="/css/backstage/default.css" rel="stylesheet" type="text/css" id="style_color"/>
     <link href="/css/backstage/uniform.default.css" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="images/favicon.ico"/>
 </head>
 <!-- END HEAD -->
 
@@ -31,7 +31,7 @@
             <div class="row-fluid">
                 <div class="span12">
                     <h3 class="page-title">
-                    	  密码修改：
+                        密码修改：
                     </h3>
                     <ul class="breadcrumb">
                         <li>
@@ -41,7 +41,7 @@
                         </li>
                         <li>
                             <a href="#">修改用户密码</a>
-                        </li> 
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -54,49 +54,94 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="portlet_tab1" style="margin-left: -50px">
                                     <!-- BEGIN FORM-->
-                                    <form action="/student/editPassword?studentId=${student.studentId}" name="editForm" id="editForm" target="rightFrame" method="post" class="form-horizontal" >
-                                        <input type="hidden" value="${student.studentPwd}" id="pwd" name="pwd">
-                                        <div class="row-fluid">
-                                            <div class="span6 ">
-                                                <div class="control-group " >
-                                                    <label class="control-label">原始密码</label>
-                                                    <div class="controls">
-                                                        <input type="password" name="oldPassword" id="oldPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
+                                    <c:if test="${role == 'manager1'}">
+                                    <form action="/student/editPassword?id=${id}&role=${role}" name="editForm"
+                                          id="editForm" target="rightFrame" method="post" class="form-horizontal">
+                                        </c:if>
+                                        <c:if test="${role == 'manager2'}">
+                                        <form action="/student/editPassword?id=${id}&role=${role}"
+                                              name="editForm" id="editForm" target="rightFrame" method="post"
+                                              class="form-horizontal">
+                                            </c:if>
+                                            <c:if test="${role == 'student'}">
+                                            <form action="/student/editPassword?id=${id}&role=${role}"
+                                                  name="editForm" id="editForm" target="rightFrame" method="post"
+                                                  class="form-horizontal">
+                                                </c:if>
+                                                <c:if test="${role == 'teacher'}">
+                                                <form action="/student/editPassword?id=${id}&role=${role}"
+                                                      name="editForm" id="editForm" target="rightFrame" method="post"
+                                                      class="form-horizontal">
+                                                    </c:if>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                        <c:if test="${role == 'manager1'}">
+                                                        <input type="hidden" value="${manager1.managerPwd}" id="pwd"
+                                                               name="pwd">
+                                                            </c:if>
+                                                            <c:if test="${role == 'manager2'}">
+                                                        <input type="hidden" value="${manager2.managerPwd}" id="pwd"
+                                                               name="pwd">
+                                                                </c:if>
+                                                                <c:if test="${role == 'student'}">
+                                                        <input type="hidden" value="${student.studentPwd}" id="pwd"
+                                                               name="pwd">
+                                                                    </c:if>
+                                                                    <c:if test="${role == 'teacher'}">
+                                                                        <input type="hidden" value="${teacher.teacherPwd}" id="pwd"
+                                                                               name="pwd">
+                                                                        </c:if>
+                                                    <div class="row-fluid">
+                                                        <div class="span6 ">
+                                                            <div class="control-group ">
+                                                                <label class="control-label">原始密码</label>
+                                                                <div class="controls">
+                                                                    <input type="password" name="oldPassword"
+                                                                           id="oldPassword" placeholder=""
+                                                                           class="m-wrap large"
+                                                                           style="width: 320px;height: 34px" required/>
 
-                                        <div class="row-fluid">
-                                            <div class="span6 ">
-                                                <div class="control-group " >
-                                                    <label class="control-label">新密码</label>
-                                                    <div class="controls">
-                                                        <input type="password" name="newPassword" id="newPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            <div class="span6 ">
-                                                <div class="control-group " >
-                                                    <label class="control-label">确认密码</label>
-                                                    <div class="controls">
-                                                        <input type="password" name="checkPassword" id="checkPassword" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                        </div>
 
-                                        <div class="form-actions">
-                                            <button type="button" class="btn blue" onclick="editPassword();"><i class="icon-ok"></i>提交</button>
-                                            <button type="reset" class="btn">重置</button>
-                                        </div>
-                                    </form>
-                                    <!-- END FORM-->
+                                                    <div class="row-fluid">
+                                                        <div class="span6 ">
+                                                            <div class="control-group ">
+                                                                <label class="control-label">新密码</label>
+                                                                <div class="controls">
+                                                                    <input type="password" name="newPassword"
+                                                                           id="newPassword" placeholder=""
+                                                                           class="m-wrap large"
+                                                                           style="width: 320px;height: 34px" required/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row-fluid">
+                                                        <div class="span6 ">
+                                                            <div class="control-group ">
+                                                                <label class="control-label">确认密码</label>
+                                                                <div class="controls">
+                                                                    <input type="password" name="checkPassword"
+                                                                           id="checkPassword" placeholder=""
+                                                                           class="m-wrap large"
+                                                                           style="width: 320px;height: 34px" required/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row-fluid">
+                                                    </div>
+
+                                                    <div class="form-actions">
+                                                        <button type="button" class="btn blue"
+                                                                onclick="editPassword();"><i class="icon-ok"></i>提交
+                                                        </button>
+                                                        <button type="reset" class="btn">重置</button>
+                                                    </div>
+                                                </form>
+                                                <!-- END FORM-->
                                 </div>
                             </div>
                         </div>
@@ -126,14 +171,14 @@
 <script src="/js/backstage/jquery.slimscroll.min.js" type="text/javascript"></script>
 <script src="/js/backstage/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="/js/backstage/jquery.cookie.min.js" type="text/javascript"></script>
-<script src="/js/backstage/jquery.uniform.min.js" type="text/javascript" ></script>
-<script src="/js/backstage/MD5.js" type="text/javascript" ></script>
+<script src="/js/backstage/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="/js/backstage/MD5.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <script src="/js/backstage/app.js"></script>
 <script>
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
         // initiate layout and plugins
-        window.parent.frames["wholeFrame"].location.reload(); 
+        window.parent.frames["wholeFrame"].location.reload();
         App.init();
     });
 </script>
@@ -143,19 +188,19 @@
         var oldPassword = hex_md5(document.getElementById("oldPassword").value);
         var newPassword = document.getElementById("newPassword").value;
         var checkPassword = document.getElementById("checkPassword").value;
-        if(oldPassword != pwd){
+        if (oldPassword != pwd) {
             alert("初始密码不正确，请重新输入！");
 
-        }else if(newPassword != checkPassword){
+        } else if (newPassword != checkPassword) {
             alert("新密码与确认密码不一致，请重新输入！");
 
-        }else{
+        } else {
             editForm.submit();
         }
     }
 
 </script>
-<script type="text/javascript">	
+<script type="text/javascript">
 
     $("#substationNo").blur(function () {
         $.ajax({
@@ -174,12 +219,12 @@
                         "-moz-box-shadow": "inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #E86455",
                         "box-shadow": "inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #E86455"
                     });
-                    $("#submit").attr("disabled", true); 
+                    $("#submit").attr("disabled", true);
                 }
             }
         });
     });
-    $("#substationNo").focus(function (){
+    $("#substationNo").focus(function () {
         $("#div_show").text(" ");
         $("#substationNo").css({
             "outline": "none",
@@ -189,11 +234,24 @@
             "-moz-box-shadow": "inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec",
             "box-shadow": "inset 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 7px #96c7ec"
         });
-        $("#submit").attr("disabled", false); 
+        $("#submit").attr("disabled", false);
     });
-    
+
 </script>
 <!-- END JAVASCRIPTS -->
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 <!-- END BODY -->
 </html>

@@ -76,7 +76,7 @@
                                         <td class="hidden-480">${major.majorName}</td>
                                         <td class="hidden-480">${major.collegeName}</td>
                                         <td class="hidden-480">
-                                            <a href="/admin/editMajorInfo?majorId=${majorId}" class="btn mini blue" target="rightFrame">
+                                            <a href="/admin/editMajorInfo?majorId=${major.majorId}" class="btn mini blue" target="rightFrame">
                                                 <i class="icon-edit"></i> 修改信息
                                             </a>
                                         </td>

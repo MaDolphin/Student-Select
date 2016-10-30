@@ -121,9 +121,25 @@
                                             </c:if>
                                         </c:forEach>
                                     </c:if>
-                                    <td class="hidden-480">${intention.firstOpttype}</td>
-                                    <td class="hidden-480">${intention.secondOpttype}</td>
-                                    <td class="hidden-480">${intention.thirdOpttype}</td>
+                                    <c:if test="${intention.firstOpttype == 0}">
+                                        <td class="hidden-480">未确认</td>
+                                    </c:if>
+                                    <c:if test="${intention.firstOpttype != 0}">
+                                        <td class="hidden-480">第${intention.firstOpttype}个确认</td>
+                                    </c:if>
+                                    <c:if test="${intention.secondOpttype == 0}">
+                                        <td class="hidden-480">未确认</td>
+                                    </c:if>
+                                    <c:if test="${intention.secondOpttype != 0}">
+                                        <td class="hidden-480">第${intention.firstOpttype}个确认</td>
+                                    </c:if>
+                                    <c:if test="${intention.thirdOpttype == 0}">
+                                        <td class="hidden-480">未确认</td>
+                                    </c:if>
+                                    <c:if test="${intention.thirdOpttype != 0}">
+                                        <td class="hidden-480">第${intention.firstOpttype}个确认</td>
+                                    </c:if>
+
                                     <td class="hidden-480">
                                         <select style="width: 130px;height: 34px" name="selectTeacher"
                                                 id="selectTeacher" class="select_field">

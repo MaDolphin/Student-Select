@@ -99,38 +99,13 @@
                                                     <option value="${teacher.teacherId}" style="color:#999999">
                                                             ${teacher.teacherName}(${teacher.majorId})
                                                     </option>
-                                                    <%--<option value="${student.teacher.get(1).getTeacherId()}" style="color:#999999">--%>
-                                                    <%--第二志愿--%>
-                                                    <%--</option>--%>
-                                                    <%--<option value="${student.teacher.get(2).getTeacherId()}" style="color:#999999">--%>
-                                                    <%--第三志愿--%>
-                                                    <%--</option>--%>
                                                 </c:forEach>
-                                                    <%--<c:forEach items="${student.teacher}" var="teacherList">--%>
-                                                    <%--<c:if test="${teacherList.teacherId == student.firstIntention}">--%>
-                                                    <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
-                                                    <%--第一志愿--%>
-                                                    <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<c:if test="${teacherList.teacherId == student.secondIntention}">--%>
-                                                    <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
-                                                    <%--第二志愿--%>
-                                                    <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<c:if test="${teacherList.teacherId == student.thirdIntention}">--%>
-                                                    <%--<option value="${teacherList.teacherId}" style="color:#999999">--%>
-                                                    <%--第三志愿--%>
-                                                    <%--</option>--%>
-                                                    <%--</c:if>--%>
-                                                    <%--<option value="" style="color:#999999" selected>调剂${teacherList.teacherId}</option>--%>
-                                                    <%--</c:forEach>--%>
-                                                    <%--<option value="0" style="color:#999999">调剂</option>--%>
                                             </select>
                                         </td>
 
                                         <td class="hidden-480">
 
-                                            <a href="javascript:if(confirm('确定调剂该志愿吗?'))  {alert(document.getElementById('selectTeacher').value);window.location='/admin/volunteerRecognition?studentId=${student.studentId}&collegeName=${student.major.collegeName}&selectTeacher='+document.getElementById('selectTeacher').value;}"
+                                            <a href="javascript:if(confirm('确定调剂该志愿吗?'))  {window.location='/admin/volunteerRecognition?studentId=${student.studentId}&collegeName=${student.major.collegeName}&selectTeacher='+document.getElementById('selectTeacher').value;}"
                                                class="btn mini green" target="rightFrame">
                                                 <i class="icon-ok"></i>调剂志愿
                                             </a>

@@ -20,5 +20,5 @@ public interface TeacherService {
     public void updateTeacher(Teacher teacher);
     public List<Teacher> exportVoluntaryInfoByCollegeName(String collegeName);
     public List<Teacher> exportVoluntaryInfo();
-
+    public Teacher findTeacherByTeacherId(String teacherId);
 }

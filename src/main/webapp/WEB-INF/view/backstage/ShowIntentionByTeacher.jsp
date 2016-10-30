@@ -64,7 +64,7 @@
                                 </th>
                                 <th class="hidden-480">准考证号</th>
                                 <th class="hidden-480">学生姓名</th>
-                                <th class="hidden-480">设备状态</th>
+                                <th class="hidden-480">状态</th>
                                 <th></th>
                             </tr>
                             </thead>

@@ -54,7 +54,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="portlet_tab1" style="margin-left: -50px">
                                     <!-- BEGIN FORM-->
-                                    <form action="/student/editPassword" name="editForm" id="editForm" target="rightFrame" method="post" class="form-horizontal" >
+                                    <form action="/admin/editMajor" name="editForm" id="editForm" target="rightFrame" method="post" class="form-horizontal" >
 
                                         <div class="row-fluid">
                                             <div class="span6 ">
@@ -83,7 +83,7 @@
                                                 <div class="control-group " >
                                                     <label class="control-label">所属学院</label>
                                                     <div class="controls">
-                                                        <input type="text" name="college" id="college" value="${major.college}" readonly="true" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
+                                                        <input type="text" name="collegeName" id="collegeName" value="${major.collegeName}" readonly="true" placeholder="" class="m-wrap large" style="width: 320px;height: 34px" required/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,7 +92,7 @@
                                         </div>
 
                                         <div class="form-actions">
-                                            <button type="button" class="btn blue" onclick="editPassword();"><i class="icon-ok"></i>提交</button>
+                                            <button type="button" class="btn blue" onclick="editMajor();"><i class="icon-ok"></i>提交</button>
                                             <button type="reset" class="btn">重置</button>
                                         </div>
                                     </form>
@@ -138,17 +138,11 @@
     });
 </script>
 <script>
-    function editPassword() {
-        var pwd = document.getElementById("pwd").value;
-        var oldPassword = hex_md5(document.getElementById("oldPassword").value);
-        var newPassword = document.getElementById("newPassword").value;
-        var checkPassword = document.getElementById("checkPassword").value;
-        if(oldPassword != pwd){
-            alert("初始密码不正确，请重新输入！");
+    function editMajor() {
+        var majorName = document.getElementById("majorName").value;
 
-        }else if(newPassword != checkPassword){
-            alert("新密码与确认密码不一致，请重新输入！");
-
+        if(majorName == null){
+            alert("请填写专业名！");
         }else{
             editForm.submit();
         }

@@ -33,6 +33,9 @@ public interface ManagerService {
     public void resetStudentPassword(String studentId);
     public void resetTeacherPassword(String teacherId);
     public void resetManager2Password(String managerName);
+    public void updateMajor(Major major);
+    public Manager findManagerByManagerId(String managerId);
+    public void updateManager(Manager manager);
     public List<Student> findAllStudentByIntention(String collegeName);
     public List<Teacher> findAllTeacherByIntention(String collegeName);
 }

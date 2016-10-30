@@ -109,4 +109,8 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Teacher> exportVoluntaryInfo(){
         return teacherDao.exportVoluntaryInfo();
     }
+
+    public Teacher findTeacherByTeacherId(String teacherId){
+        return teacherDao.selectByPrimaryKey(teacherId);
+    }
 }

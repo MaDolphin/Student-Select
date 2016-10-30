@@ -2,6 +2,8 @@ package com.demo.controller;
 
 import com.demo.dao.TeacherMapper;
 import com.demo.entity.Intention;
+import com.demo.entity.Manager;
+import com.demo.service.ManagerService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.demo.entity.Student;
@@ -32,7 +34,8 @@ public class StudentController {
     @Resource
     private TeacherService teacherService;
     @Resource
-    private TeacherMapper teacherDao;
+    private ManagerService managerService;
+
 
     @RequestMapping("/teacherInfo")
     public String teacherInfo(HttpSession session,String majorId) {
@@ -48,11 +51,22 @@ public class StudentController {
 
     @RequestMapping("/editPassword")
     @ResultMap("BaseResultMap")
-    public String editPassword(String studentId,String newPassword) {
+    public String editPassword(String id,String newPassword,String role) {
         newPassword = Md5.Md5(newPassword);
-        Student student = studentService.findStudentByStudentId(studentId);
-        student.setStudentPwd(newPassword);
-        studentService.updateStudent(student);
+        if(role.equals("student")){
+            Student student = studentService.findStudentByStudentId(id);
+            student.setStudentPwd(newPassword);
+            studentService.updateStudent(student);
+        }else if(role.equals("teacher")){
+            Teacher teacher = teacherService.findTeacherByTeacherId(id);
+            teacher.setTeacherPwd(newPassword);
+            teacherService.updateTeacher(teacher);
+        }else {
+            Manager manager = managerService.findManagerByManagerId(id);
+            manager.setManagerPwd(newPassword);
+            managerService.updateManager(manager);
+        }
+
         return "redirect:/student/editSuccess";
     }
 
