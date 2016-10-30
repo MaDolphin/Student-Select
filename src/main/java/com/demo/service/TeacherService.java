@@ -18,5 +18,6 @@ public interface TeacherService {
     public void refuseStudent(int intentionId,int intentionOrder,String teacherId);
     public Teacher queryTeacherByTeacherId(String teacherId);
     public void updateTeacher(Teacher teacher);
+    public List<Teacher> exportVoluntaryInfoByCollegeName(String collegeName);
 
 }

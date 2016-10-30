@@ -4,7 +4,9 @@ import com.demo.entity.*;
 import com.demo.service.ManagerService;
 import com.demo.service.StudentService;
 import com.demo.service.TeacherService;
+import com.demo.util.ExportUtil;
 import com.demo.util.Md5;
+import org.apache.http.HttpResponse;
 import org.springframework.batch.core.step.tasklet.SystemCommandException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -37,41 +42,41 @@ public class AdminController {
     private TeacherService teacherService;
 
     @RequestMapping("/batchImport")
-    public String batchImport(){
+    public String batchImport() {
         return "/backstage/BatchImport";
     }
 
     @RequestMapping("/batchImportMethod")
-    public String batchImportMethod(MultipartFile upload1,MultipartFile upload2,MultipartFile upload3, Model model){
-        if(upload1.getSize() != 0){
+    public String batchImportMethod(MultipartFile upload1, MultipartFile upload2, MultipartFile upload3, Model model) {
+        if (upload1.getSize() != 0) {
             boolean flag1 = false;
-            try{
-                if(managerService.studentFileToDB(upload1))
+            try {
+                if (managerService.studentFileToDB(upload1))
                     flag1 = true;
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if(upload2.getSize() != 0){
+        if (upload2.getSize() != 0) {
             boolean flag2 = false;
-            try{
-                if(managerService.teacherFileToDB(upload2))
+            try {
+                if (managerService.teacherFileToDB(upload2))
                     flag2 = true;
                 else flag2 = false;
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        if(upload3.getSize() != 0){
+        if (upload3.getSize() != 0) {
             boolean flag3 = false;
-            try{
-                if(managerService.majorFileToDB(upload3))
+            try {
+                if (managerService.majorFileToDB(upload3))
                     flag3 = true;
                 else flag3 = false;
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -79,54 +84,111 @@ public class AdminController {
     }
 
     @RequestMapping("/volunteerRecognitionView")
-    public String volunteerRecognitionView(String collegeName, HttpSession session){
+    public String volunteerRecognitionView(String collegeName, HttpSession session) {
         List<Intention> intentionList = managerService.findIntentionByCollegeName(collegeName);
-        session.setAttribute("intentionList",intentionList);
+        session.setAttribute("intentionList", intentionList);
         return "/backstage/ShowIntentionByCollege";
     }
 
     @RequestMapping("/volunteerRecognition")
-    public String volunteerRecognition(String studentId, HttpSession session,String selectTeacher,String collegeName){
+    public String volunteerRecognition(String studentId, HttpSession session, String selectTeacher, String collegeName) {
         Student student = studentService.findStudentByStudentId(studentId);
         student.setTeacherId(selectTeacher);
         studentService.updateStudent(student);
-        if(!selectTeacher.equals("0") && selectTeacher != null && !selectTeacher.equals("")){
+        if (!selectTeacher.equals("0") && selectTeacher != null && !selectTeacher.equals("")) {
             Teacher teacher = teacherService.queryTeacherByTeacherId(selectTeacher);
-            teacher.setCollageSurplus(teacher.getCollageSurplus()-1);
+            teacher.setCollageSurplus(teacher.getCollageSurplus() - 1);
             teacherService.updateTeacher(teacher);
         }
         try {
             collegeName = URLEncoder.encode(collegeName, "UTF-8");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/admin/volunteerRecognitionView?collegeName="+collegeName;
+        return "redirect:/admin/volunteerRecognitionView?collegeName=" + collegeName;
     }
 
     @RequestMapping("/voluntarySwapView")
-    public String voluntarySwapView(String collegeName, HttpSession session){
+    public String voluntarySwapView(String collegeName, HttpSession session) {
         List<Student> studentList = managerService.findSwapStudentByCollegeName(collegeName);
-        session.setAttribute("studentList",studentList);
+        session.setAttribute("studentList", studentList);
         return "/backstage/ShowVoluntarySwap";
     }
 
     @RequestMapping("/systemFunction")
-    public String systemFunction(HttpSession session){
+    public String systemFunction(HttpSession session) {
         Sysfunction studentFunction = managerService.checkAuthority("student");
         Sysfunction teacherFunction = managerService.checkAuthority("teacher");
         Sysfunction manager2Function = managerService.checkAuthority("manager2");
-        session.setAttribute("studentFunction",studentFunction);
-        session.setAttribute("teacherFunction",teacherFunction);
-        session.setAttribute("manager2Function",manager2Function);
+        session.setAttribute("studentFunction", studentFunction);
+        session.setAttribute("teacherFunction", teacherFunction);
+        session.setAttribute("manager2Function", manager2Function);
         return "/backstage/SystenFunction";
     }
 
     @RequestMapping("/systemFunctionEdit")
-    public String systemFunctionEdit(int function,String type){
+    public String systemFunctionEdit(int function, String type) {
         Sysfunction systemFunction = managerService.checkAuthority(type);
         systemFunction.setStatus(function);
         managerService.updateSysFunction(systemFunction);
         return "redirect:/admin/systemFunction";
+    }
+
+    @RequestMapping("/exportVoluntaryInfo")
+    public String exportVoluntaryInfo(String collegeName, HttpServletResponse response) {
+        // dataset
+        List<List<String>> dataset = new ArrayList<List<String>>();
+        List<Teacher> teacherList = teacherService.exportVoluntaryInfoByCollegeName(collegeName);
+        // excel header for base info
+        List<String> excelHeaderForBaseInfo = new ArrayList<String>();
+        excelHeaderForBaseInfo.add("导师编号");
+        excelHeaderForBaseInfo.add("导师姓名");
+        excelHeaderForBaseInfo.add("专业编号");
+        excelHeaderForBaseInfo.add("专业名称");
+        excelHeaderForBaseInfo.add("学生编号");
+        excelHeaderForBaseInfo.add("学生名称");
+        excelHeaderForBaseInfo.add("所属学院");
+        //导出到excel
+
+        for (int i=0;i<teacherList.size();i++) {
+            for(int j=0;j<teacherList.get(i).getStudent().size();j++){
+                List<String> rowList = new ArrayList<String>();
+                rowList.add(teacherList.get(i).getTeacherId());
+                rowList.add(teacherList.get(i).getTeacherName());
+                rowList.add(teacherList.get(i).getMajor().getMajorId());
+                rowList.add(teacherList.get(i).getMajor().getMajorName());
+                rowList.add(teacherList.get(i).getStudent().get(j).getStudentId());
+                rowList.add(teacherList.get(i).getStudent().get(j).getStudentName());
+                rowList.add(teacherList.get(i).getMajor().getCollegeName());
+                //把每一个导师的学生都放到dataset里面
+                dataset.add(rowList);
+            }
+        }
+        ExportUtil exportUtil = new ExportUtil();
+
+        String exportExcelName =  "志愿信息表";
+
+        try {
+            exportExcelName = URLEncoder.encode(exportExcelName, "UTF-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        response.setContentType("application/attachment");
+
+        response.setHeader("Content-disposition","attachment;filename="+exportExcelName+".xls");
+
+        try {
+            ServletOutputStream out = response.getOutputStream();
+            exportUtil.exportExcelForHealthInfo("志愿信息表",excelHeaderForBaseInfo,dataset,out,teacherList);
+            out.close();
+            //System.out.println("excel export success");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "/backstage/main";
     }
 
 }

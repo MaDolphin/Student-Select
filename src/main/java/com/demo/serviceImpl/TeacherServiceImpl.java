@@ -101,4 +101,8 @@ public class TeacherServiceImpl implements TeacherService{
     public void updateTeacher(Teacher teacher){
         teacherDao.updateByPrimaryKey(teacher);
     }
+
+    public List<Teacher> exportVoluntaryInfoByCollegeName(String collegeName){
+        return teacherDao.exportVoluntaryInfoByCollegeName(collegeName);
+    }
 }

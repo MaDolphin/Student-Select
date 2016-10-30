@@ -14,6 +14,18 @@
       <result column="major_name" property="majorName" jdbcType="VARCHAR" />
       <result column="college_name" property="collegeName" jdbcType="VARCHAR" />
     </association>
+
+    <collection property="student" ofType="com.demo.entity.Student">
+      <id column="student_id" property="studentId" jdbcType="VARCHAR" />
+      <result column="person_id" property="personId" jdbcType="VARCHAR" />
+      <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+      <result column="student_pwd" property="studentPwd" jdbcType="VARCHAR" />
+      <result column="student_sex" property="studentSex" jdbcType="VARCHAR" />
+      <result column="student_birthday" property="studentBirthday" jdbcType="VARCHAR" />
+      <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+      <result column="student_tel" property="studentTel" jdbcType="VARCHAR" />
+      <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    </collection>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.demo.entity.Teacher" extends="BaseResultMap" >
     <result column="teacher_introduction" property="teacherIntroduction" jdbcType="LONGVARCHAR" />

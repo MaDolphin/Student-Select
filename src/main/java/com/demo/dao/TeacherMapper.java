@@ -99,4 +99,14 @@ public interface TeacherMapper {
     @ResultMap("BaseResultMap")
     List<Teacher> teacher();
 
+    @Select({
+            "select",
+            "*",
+            "from teacher t inner join major m",
+            "on t.major_id = m.major_id",
+            "INNER JOIN student s ON t.teacher_id = s.teacher_id",
+            "where m.college_name = #{0}"
+    })
+    @ResultMap("BaseResultMap")
+    List<Teacher> exportVoluntaryInfoByCollegeName(String collegeName);
 }

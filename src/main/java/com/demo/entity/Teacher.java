@@ -1,5 +1,7 @@
 package com.demo.entity;
 
+import java.util.List;
+
 public class Teacher {
     private String teacherId;
 
@@ -16,6 +18,16 @@ public class Teacher {
     private String teacherIntroduction;
 
     private Major major;
+
+    public List<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(List<Student> student) {
+        this.student = student;
+    }
+
+    private List<Student> student;
 
     public Major getMajor() {
         return major;

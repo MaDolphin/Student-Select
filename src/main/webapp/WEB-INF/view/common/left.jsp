@@ -303,7 +303,7 @@
                             <a href="/admin/voluntarySwapView?collegeName=${manager2.collegeName}" target="rightFrame">志愿调剂</a>
                         </li>
                         <li>
-                            <a>导出志愿信息</a>
+                            <a href="/admin/exportVoluntaryInfo?collegeName=${manager2.collegeName}" target="rightFrame">导出志愿信息</a>
                         </li>
                     </c:if>
                         <c:if test="${sysfunction != 1}">
