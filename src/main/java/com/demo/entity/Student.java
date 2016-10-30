@@ -25,7 +25,17 @@ public class Student {
 
     private Major major;
 
+    private Intention intention;
+
     private List<Teacher> teacher;
+
+    public Intention getIntention() {
+        return intention;
+    }
+
+    public void setIntention(Intention intention) {
+        this.intention = intention;
+    }
 
     public Major getMajor() {
         return major;

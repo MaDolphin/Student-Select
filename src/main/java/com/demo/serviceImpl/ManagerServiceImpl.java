@@ -95,8 +95,8 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public List<Intention> findAllStudentByIntention(String collegeName) {
-        return intentionDao.findAllStudentByIntention(collegeName);
+    public List<Student> findAllStudentByIntention(String collegeName) {
+        return studentDao.findAllStudentByIntention(collegeName);
     }
 
     @Override

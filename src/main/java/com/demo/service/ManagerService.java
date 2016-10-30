@@ -33,6 +33,6 @@ public interface ManagerService {
     public void resetStudentPassword(String studentId);
     public void resetTeacherPassword(String teacherId);
     public void resetManager2Password(String managerName);
-    public List<Intention> findAllStudentByIntention(String collegeName);
+    public List<Student> findAllStudentByIntention(String collegeName);
     public List<Teacher> findAllTeacherByIntention(String collegeName);
 }

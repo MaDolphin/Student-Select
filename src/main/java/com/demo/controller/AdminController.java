@@ -263,8 +263,8 @@ public class AdminController {
 
     @RequestMapping("/findStudentByManager2")
     public String findAllStudentByIntention(String collegeName,Model model) {
-        List<Intention> intentionList = managerService.findAllStudentByIntention(collegeName);
-        model.addAttribute("intentionList",intentionList);
+        List<Student> studentList = managerService.findAllStudentByIntention(collegeName);
+        model.addAttribute("studentList",studentList);
         return "/backstage/ShowStudentByManager2";
     }
 

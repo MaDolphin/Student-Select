@@ -105,14 +105,4 @@ public interface IntentionMapper {
     @ResultMap("BaseResultMap")
     List<Intention> findIntentionByCollegeName(String collegeName);
 
-    @Select({
-            "select * from student s",
-            "LEFT JOIN intention i ON i.student_id = s.student_id",
-            "INNER JOIN major m on m.major_id = s.major_id",
-            "WHERE m.college_name = #{0}"
-    })
-    @ResultMap("BaseResultMap")
-    List<Intention> findAllStudentByIntention(String collegeName);
-
-
 }

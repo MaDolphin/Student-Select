@@ -19,6 +19,17 @@
       <result column="college_name" property="collegeName" jdbcType="VARCHAR" />
     </association>
 
+    <association property="intention" javaType="com.demo.entity.Intention">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="student_id" property="studentId" jdbcType="VARCHAR" />
+      <result column="first_intention" property="firstIntention" jdbcType="VARCHAR" />
+      <result column="second_intention" property="secondIntention" jdbcType="VARCHAR" />
+      <result column="third_intention" property="thirdIntention" jdbcType="VARCHAR" />
+      <result column="first_opttype" property="firstOpttype" jdbcType="INTEGER" />
+      <result column="second_opttype" property="secondOpttype" jdbcType="INTEGER" />
+      <result column="third_opttype" property="thirdOpttype" jdbcType="INTEGER" />
+    </association>
+
     <collection property="teacher" ofType="com.demo.entity.Teacher">
       <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
       <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />

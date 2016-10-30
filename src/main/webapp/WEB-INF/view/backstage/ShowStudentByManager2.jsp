@@ -73,22 +73,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <c:forEach items="${intentionList}" var="intention">
+                                <c:forEach items="${studentList}" var="student">
                                     <tr class="odd gradeX">
                                         <td><input type="checkbox" class="checkboxes" value="1"/></td>
-                                        <td class="hidden-480">${intention.student.studentId}</td>
-                                        <td class="hidden-480">${intention.student.studentName}</td>
-                                        <td class="hidden-480">${intention.student.personId}</td>
-                                        <td class="hidden-480">${intention.student.studentSex}</td>
-                                        <td class="hidden-480">${intention.student.studentBirthday}</td>
-                                        <td class="hidden-480">${intention.student.studentTel}</td>
-                                        <td class="hidden-480">${intention.major.majorName}</td>
-                                        <c:if test="${intention.id != null}">
+                                        <td class="hidden-480">${student.studentId}</td>
+                                        <td class="hidden-480">${student.studentName}</td>
+                                        <td class="hidden-480">${student.personId}</td>
+                                        <td class="hidden-480">${student.studentSex}</td>
+                                        <td class="hidden-480">${student.studentBirthday}</td>
+                                        <td class="hidden-480">${student.studentTel}</td>
+                                        <td class="hidden-480">${student.major.majorName}</td>
+                                        <c:if test="${student.intention.id != null}">
                                             <td class="hidden-480">
                                                 <span class="label label-success">已填报</span>
                                             </td>
                                         </c:if>
-                                        <c:if test="${intention.id == null}">
+                                        <c:if test="${student.intention.id == null}">
                                             <td class="hidden-480">
                                                 <span class="label label-info">未填报</span>
                                             </td>
